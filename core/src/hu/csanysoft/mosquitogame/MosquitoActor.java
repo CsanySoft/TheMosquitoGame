@@ -29,7 +29,7 @@ public class MosquitoActor extends OneSpriteStaticActor {
     public void act(float delta) {
         super.act(delta);
         setX(getX() + speed);
-        if(speed!=0 && ((GameStage)getStage()).canGo && !(((GameStage)getStage()).end)) travelledLength+=speed;
+        if(speed!=0 && ((GameStage)getStage()).canGo && !(((GameStage)getStage()).end)) travelledLength+=Math.abs(speed);
         System.out.println("travelledLength = " + travelledLength);
         for(Actor actor : getStage().getActors()) {
             actor = (OneSpriteStaticActor)actor;

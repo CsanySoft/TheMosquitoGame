@@ -24,16 +24,16 @@ public class GameStage extends MyStage {
         c = new Calcuations();
 
         posA=100;
-        length = 600;
+        length = 300;
         mosquitoWidth= 20;
         speedMan= .1f;
         speedMosquito= 2;
         posB=posA+length;
-        travelLength=2000;
+        travelLength=1000;
 
         manActor1 = new ManActor(Assets.manager.get(Assets.MAN_TEXTURE),posA,speedMan);
         manActor1.setId((short)0);
-        manActor2 = new ManActor(Assets.manager.get(Assets.MAN_TEXTURE), posB, 0-speedMan);
+        manActor2 = new ManActor(Assets.manager.get(Assets.MAN_TEXTURE), posB+manActor1.getWidth(), 0-speedMan);
         manActor2.setId((short)1);
         manActor2.setFlip(true, false);
         mosquitoActor = new MosquitoActor(Assets.manager.get(Assets.MOSQUITO_TEXTURE),posA,speedMosquito, mosquitoWidth);
@@ -67,10 +67,12 @@ public class GameStage extends MyStage {
         super.act(delta);
 
         if(!canGo) {
-            mosquitoActor.setX(manActor1.getX()+manActor1.getWidth());
+            mosquitoActor.setX(manActor1.getX());
         }
         length = manActor2.getX()-manActor1.getX();
-        if(length<=lengthToStart) canGo=true;
+        if(length<=lengthToStart){
+            canGo=true;
+        }
         //System.out.println("canGo = " + canGo);
         //System.out.println("speedMosquito = " + speedMosquito);
         System.out.println("lengthToStart = " + lengthToStart);

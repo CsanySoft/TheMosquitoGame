@@ -53,8 +53,8 @@ public class GameStage extends MyStage {
             }
         });
 
-        lengthToStart = 500;//c.getLenghtToStart(mosquitoWidth,speedMan,speedMosquito,travelLength);
-        fitWorldToWidth();
+        lengthToStart = c.getLenghtToStart(mosquitoWidth,speedMan,speedMosquito,travelLength);
+        fitWorldToWidth();//Külömböző méretű képernyők miatt
     }
 
     @Override

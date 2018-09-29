@@ -8,6 +8,13 @@ public class ManActor extends OneSpriteStaticActor {
     float pos, speed;
     short id;
 
+    /**
+     *
+     * @param texture Az ember textúrája
+     * @param pos Az ember kezdeti pozíciója
+     * @param speed Az ember sebessége
+     */
+
     public ManActor(Texture texture, float pos, float speed) {
         super(texture);
         this.pos = pos;

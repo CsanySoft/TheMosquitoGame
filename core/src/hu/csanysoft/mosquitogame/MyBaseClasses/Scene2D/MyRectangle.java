@@ -172,7 +172,7 @@ public class MyRectangle extends MyShape{
         //x10, y10 is centre point of rect1. x20, y20 is centre point of rect2
         //height1, width1 are half heights/widths of rect1, radrot is rotation of rect in radians
 
-        MyCircle circle = (MyCircle)objB;
+        MyCircle circle = objB;
 
         //System.out.println(circle);
         //System.out.println(rectangle);

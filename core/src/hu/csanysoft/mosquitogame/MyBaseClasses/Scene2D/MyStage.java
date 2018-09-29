@@ -189,7 +189,7 @@ abstract public class MyStage extends Stage implements InitableInterface {
 
     protected void resized(){
         setCameraResetToCenterOfScreen();
-    };
+    }
 
     @Override
     public void act(float delta) {

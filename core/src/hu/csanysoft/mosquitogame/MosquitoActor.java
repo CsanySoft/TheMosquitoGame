@@ -12,6 +12,14 @@ public class MosquitoActor extends OneSpriteStaticActor {
 
     float pos, speed, travelledLength;
 
+    /**
+     *
+     * @param texture A szúnyog textúrája
+     * @param pos Indulási pozíció
+     * @param speed A szúnyog sebessége
+     * @param width A szúnyog szélessége
+     */
+
     public MosquitoActor(Texture texture, float pos, float speed, float width) {
         super(texture);
         this.pos = pos;
@@ -32,7 +40,7 @@ public class MosquitoActor extends OneSpriteStaticActor {
         if(speed!=0 && ((GameStage)getStage()).canGo && !(((GameStage)getStage()).end)) travelledLength+=Math.abs(speed);
         System.out.println("travelledLength = " + travelledLength);
         for(Actor actor : getStage().getActors()) {
-            actor = (OneSpriteStaticActor)actor;
+            actor = actor;
             if(actor instanceof ManActor) {
                 if(((ManActor) actor).getId()==0) {
                     if(((ManActor) actor).overlaps(ShapeType.Rectangle, this)) {

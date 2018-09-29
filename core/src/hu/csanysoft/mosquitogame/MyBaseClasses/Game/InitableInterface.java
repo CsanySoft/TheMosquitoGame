@@ -5,5 +5,5 @@ package hu.csanysoft.mosquitogame.MyBaseClasses.Game;
  */
 
 public interface InitableInterface {
-    public void init();
+    void init();
 }

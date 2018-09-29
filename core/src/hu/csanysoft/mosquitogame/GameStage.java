@@ -40,7 +40,6 @@ public class GameStage extends MyStage {
         canGo=false;  end = false;
         if(!canGo)mosquitoActor.setSpeed(0);
 
-
         addActor(manActor1);
         addActor(manActor2);
         addActor(mosquitoActor);
@@ -54,7 +53,8 @@ public class GameStage extends MyStage {
             }
         });
 
-        lengthToStart = c.getLenghtToStart(mosquitoWidth,speedMan,speedMosquito,travelLength);
+        lengthToStart = 500;//c.getLenghtToStart(mosquitoWidth,speedMan,speedMosquito,travelLength);
+        fitWorldToWidth();
     }
 
     @Override
@@ -67,7 +67,7 @@ public class GameStage extends MyStage {
         super.act(delta);
 
         if(!canGo) {
-            mosquitoActor.setX(manActor1.getX());
+            mosquitoActor.setX(manActor1.getX() + manActor1.getWidth());
         }
         length = manActor2.getX()-manActor1.getX();
         if(length<=lengthToStart){

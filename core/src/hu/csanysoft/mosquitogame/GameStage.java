@@ -26,7 +26,7 @@ public class GameStage extends MyStage {
         posA=100;
         length = 300;
         mosquitoWidth= 20;
-        speedMan= .1f;
+        speedMan= .1f;//Todo: Külön sebesség A-nak és B-nek
         speedMosquito= 2;
         posB=posA+length;
         travelLength=1000;

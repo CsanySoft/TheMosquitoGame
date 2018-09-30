@@ -1,14 +1,27 @@
 package hu.csanysoft.mosquitogame;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 import hu.csanysoft.mosquitogame.GlobalClasses.Assets;
+import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.MyActor;
 import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.MyScreen;
+import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.MyStage;
 
 public class LoadingScreen extends MyScreen {
 
     BitmapFont bitmapFont = new BitmapFont();
+    LoadingStage loadingStage;
+    Image logo, loadingFrame, loadingBarHidden, screenBg, loadingBg;
+
+    float startX, endX, percent;
+
+    MyActor loadingBar;
 
     public LoadingScreen(TheMosquitoGame game) {
         super(game);
@@ -17,26 +30,105 @@ public class LoadingScreen extends MyScreen {
 
     @Override
     public void show() {
+        super.show();
+        Assets.manager.load("pictures/loading.pack", TextureAtlas.class);
         Assets.manager.finishLoading();
+
+        loadingStage = new LoadingStage(spriteBatch, game);
+
+        TextureAtlas atlas = Assets.manager.get("pictures/loading.pack", TextureAtlas.class);
+
+        logo = new Image(atlas.findRegion("libgdx-logo")); //TODO: Átrakni saját logora
+        loadingFrame = new Image(atlas.findRegion("loading-frame"));
+        loadingBarHidden = new Image(atlas.findRegion("loading-bar-hidden"));
+        screenBg = new Image(atlas.findRegion("screen-bg"));
+        loadingBg = new Image(atlas.findRegion("loading-frame-bg"));
+
+        Animation animation = new Animation(.05f, atlas.findRegions("loading-bar-anim"));
+        animation.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
+        loadingBar = new LoadingBar(animation);
+
+
+        loadingStage.addActor(screenBg);
+        loadingStage.addActor(loadingBar);
+        loadingStage.addActor(loadingBg);
+        loadingStage.addActor(loadingBarHidden);
+        loadingStage.addActor(loadingFrame);
+        loadingStage.addActor(logo);
+
         Assets.load();
+    }
+
+
+    @Override
+    public void resize(int width, int height) {
+        super.resize(width, height);
+        width = 1024;
+        height = 768;
+
+        loadingStage.getViewport().update(width, height, false);
+
+        screenBg.setSize(width, height);
+
+        logo.setX((width - logo.getWidth()) / 2);
+        logo.setY((height - logo.getHeight()) / 2 + 100);
+
+        loadingBar.setX((width - loadingBar.getWidth()) / 4);
+        loadingBar.setY((height - loadingBar.getHeight()) / 4);
+
+        loadingFrame.setPosition(loadingBar.getX()-15, loadingBar.getY()-5);
+
+        loadingBarHidden.setX(loadingBar.getX()+35);
+        loadingBarHidden.setY(loadingBar.getY()-3);
+
+        startX = loadingBarHidden.getX();
+        endX = 440;
+
+        loadingBg.setSize(450,50);
+        loadingBg.setX(loadingBarHidden.getX() + 30);
+        loadingBg.setY(loadingBarHidden.getY() + 3);
     }
 
     @Override
     public void render(float delta) {
         super.render(delta);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+
+
+        if(Assets.manager.update()) {
+            if(Gdx.input.isTouched()) {
+                game.setScreen(new InputScreen(game));
+            }
+        }
+
+        percent = Interpolation.linear.apply(percent, Assets.manager.getProgress(), 0.1f);
+
+        loadingBarHidden.setX(startX + endX * percent);
+        loadingBg.setX(loadingBarHidden.getX() + 30);
+        loadingBg.setWidth(450-450*percent);
+        loadingBg.invalidate();
+
+
+
+        loadingStage.act(delta);
+        loadingStage.draw();
 
         spriteBatch.begin();
-        bitmapFont.draw(spriteBatch, "Betöltés: " + Assets.manager.getLoadedAssets() + "/" + (Assets.manager.getQueuedAssets() + Assets.manager.getLoadedAssets()) + " (" + ((int) (Assets.manager.getProgress() * 100f)) + "%)", Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
+
+
+        if(Assets.manager.update()) {
+            bitmapFont.draw(spriteBatch, "Betöltés kész, kattints a továbblépéshez!", loadingBar.getX()+loadingBar.getWidth()+loadingFrame.getWidth()/2-150, loadingBar.getY()+loadingFrame.getHeight()/2);
+        } else bitmapFont.draw(spriteBatch, "Betöltés: " + Assets.manager.getLoadedAssets() + "/" + (Assets.manager.getQueuedAssets() + Assets.manager.getLoadedAssets()) + " (" + ((int) (Assets.manager.getProgress() * 100f)) + "%)", loadingBar.getX()+loadingBar.getWidth()+loadingFrame.getWidth()/2-75, loadingBar.getY()+loadingFrame.getHeight()/2);
         spriteBatch.end();
-        if (Assets.manager.update()) {
-            Assets.afterLoaded();
-            game.setScreen(new InputScreen(game));
-        }
     }
+
+
 
     @Override
     public void hide() {
-
+        super.hide();
+        Assets.manager.unload("pictures/loading.pack");
     }
 
     @Override

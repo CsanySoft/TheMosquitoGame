@@ -230,6 +230,10 @@ abstract public class MyStage extends Stage implements InitableInterface {
 
     }
 
+    @Override
+    public void draw() {
+        super.draw();
+    }
 
     public void resetElapsedTime()
     {

@@ -12,7 +12,7 @@ import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.ShapeType;
 
 public class GameStage extends MyStage {
 
-    float posA, posB, length, mosquitoWidth, travelLength, speedMan, speedMosquito, lengthToStart;
+    float posA, posB, length, mosquitoWidth, travelLength, speedManA, speedManB, speedMosquito, lengthToStart, speedMan, wind;
     Calcuations c;
     ManActor manActor1, manActor2;
     MosquitoActor mosquitoActor;
@@ -26,17 +26,24 @@ public class GameStage extends MyStage {
         posA=100;
         length = 500;
         mosquitoWidth= 20;
-        speedMan= .2f;//Todo: Külön sebesség A-nak és B-nek
-        speedMosquito= 4f;
+        speedManA= .2f;
+        speedManB= .4f;
+        speedMosquito= 6f;
         posB=posA+length;
         travelLength=1000;
+        wind = .5f; //Pozitív=jobbra fúj a szél, negatív = balra fúj a szél. Nem lehet nagyobb vagy egyenlő, mint a szúnyog sebességének fele
 
-        manActor1 = new ManActor(Assets.manager.get(Assets.MAN_TEXTURE),posA,speedMan);
+        speedMan = 0; //Nincs használva ha különböző a két ember sebessége
+
+        manActor1 = new ManActor(Assets.manager.get(Assets.MAN_TEXTURE),posA,speedManA);
         manActor1.setId((short)0);
-        manActor2 = new ManActor(Assets.manager.get(Assets.MAN_TEXTURE), posB+manActor1.getWidth(), 0-speedMan);
+        manActor2 = new ManActor(Assets.manager.get(Assets.MAN_TEXTURE), posB+manActor1.getWidth(), 0-speedManB);
         manActor2.setId((short)1);
         manActor2.setFlip(true, false);
-        mosquitoActor = new MosquitoActor(Assets.manager.get(Assets.MOSQUITO_TEXTURE),posA,speedMosquito, mosquitoWidth);
+        mosquitoActor = new MosquitoActor(Assets.manager.get(Assets.MOSQUITO_TEXTURE),posA,speedMosquito, mosquitoWidth, true);
+        mosquitoActor.setRightSpeed(speedMosquito+wind);
+        mosquitoActor.setLeftSpeed(0-speedMosquito+wind);
+
         canGo=false;  end = false;
         if(!canGo)mosquitoActor.setSpeed(0);
 
@@ -53,8 +60,9 @@ public class GameStage extends MyStage {
             }
         });
 
-        lengthToStart = c.getLenghtToStart(mosquitoWidth,speedMan,speedMosquito,travelLength);
-        fitWorldToWidth();//Külömböző méretű képernyők miatt
+        lengthToStart = c.getLenghtToStart(mosquitoWidth,speedManA, speedManB,mosquitoActor.getLeftSpeed(), mosquitoActor.getRightSpeed(),travelLength);
+        mosquitoActor.setSpeed(speedMosquito);
+        fitWorldToWidth();//Különböző méretű képernyők miatt
     }
 
     @Override
@@ -78,10 +86,10 @@ public class GameStage extends MyStage {
         }
         //System.out.println("canGo = " + canGo);
         //System.out.println("speedMosquito = " + speedMosquito);
-        System.out.println("lengthToStart = " + lengthToStart);
-        System.out.println("length = " + length);
+        //System.out.println("lengthToStart = " + lengthToStart);
+        //System.out.println("length = " + length);
 
-        System.out.println("Travellable: " + travellableDistance);
+        //System.out.println("Travellable: " + travellableDistance);
 
 
         if(length<=mosquitoWidth) {

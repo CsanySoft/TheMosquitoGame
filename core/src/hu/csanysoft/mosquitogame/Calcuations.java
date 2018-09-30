@@ -6,13 +6,14 @@ public class Calcuations {
 
     /**
      * @param mosquitoWidth A szúnyog szélessége
-     * @param manSpeed Az emberek sebessége
-     * @param mosquitoSpeed A szúnyog sebessége
+     * @param speedMan Az emberek sebessége
+     * @param speedMosquito A szúnyog sebessége
      * @param travelLength A megtenni kívánt táv
      * @return Az indulási távolság
      * */
-    public float getLenghtToStart(float mosquitoWidth, float manSpeed, float mosquitoSpeed, float travelLength) {
-        float d = manSpeed+mosquitoSpeed;
-        return (float)((Math.floor(-2*mosquitoWidth+(Math.sqrt(Math.pow(2*mosquitoWidth,2)-4*d*(d-travelLength)))/2*d)-1)*d); //TODO: Számolást megoldani
+    public float getLenghtToStart(float mosquitoWidth, float speedMan, float speedMosquito, float travelLength) {
+        return (((travelLength+speedMosquito)*(10*speedMan) + 10*speedMan + (5*speedMosquito*mosquitoWidth))/speedMosquito)*((speedMan*2)/(speedMan*10)) - speedMosquito/10;
     }
+
+
 }

@@ -24,10 +24,10 @@ public class GameStage extends MyStage {
         c = new Calcuations();
 
         posA=100;
-        length = 300;
+        length = 500;
         mosquitoWidth= 20;
-        speedMan= .1f;//Todo: Külön sebesség A-nak és B-nek
-        speedMosquito= 2;
+        speedMan= .2f;//Todo: Külön sebesség A-nak és B-nek
+        speedMosquito= 4f;
         posB=posA+length;
         travelLength=1000;
 
@@ -66,10 +66,13 @@ public class GameStage extends MyStage {
     public void act(float delta) {
         super.act(delta);
 
+        float travellableDistance = (((length/((speedMan*2)/(speedMan*10)))*speedMosquito-mosquitoWidth*(speedMosquito*5)) - 10*speedMan)/(10*speedMan)-speedMosquito;
+
+
         if(!canGo) {
             mosquitoActor.setX(manActor1.getX() + manActor1.getWidth());
         }
-        length = manActor2.getX()-manActor1.getX();
+        length = manActor2.getX()-manActor1.getX()-manActor1.getWidth();
         if(length<=lengthToStart){
             canGo=true;
         }
@@ -78,7 +81,10 @@ public class GameStage extends MyStage {
         System.out.println("lengthToStart = " + lengthToStart);
         System.out.println("length = " + length);
 
-        if(length<=mosquitoWidth+manActor1.getWidth()) {
+        System.out.println("Travellable: " + travellableDistance);
+
+
+        if(length<=mosquitoWidth) {
             manActor1.setSpeed(0);
             manActor2.setSpeed(0);
             mosquitoActor.setSpeed(0);

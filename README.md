@@ -1,4 +1,4 @@
-# PenDroid Országos Középiskolai Programozó verseny I. forduló versenyfeladata
+# PENDroid Országos Középiskolai Programozó verseny I. forduló versenyfeladata
 ## A Szúnyog fittneszprogram
 ### Készítette: CsánySoft csapat
 

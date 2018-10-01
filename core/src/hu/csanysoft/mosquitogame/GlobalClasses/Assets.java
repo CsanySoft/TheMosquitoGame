@@ -30,7 +30,12 @@ public class Assets {
 			= new AssetDescriptor<Texture>("pictures/man.gif", Texture.class);
 
 	public static final AssetDescriptor<Texture> MOSQUITO_TEXTURE
-			= new AssetDescriptor<Texture>("pictures/mosquito.png", Texture.class);
+			= new AssetDescriptor<Texture>("pictures/Moszkito/szunyog.png", Texture.class);
+
+	public static final AssetDescriptor<TextureAtlas> MOSQUITO_TEXTUREATLAS
+			= new AssetDescriptor<TextureAtlas>("pictures/Moszkito/szunyog.atlas", TextureAtlas.class);
+
+	// TODO: 2018. 10. 01. Atlasz számítást tesztelni 
 
 
     public static void prepare() {
@@ -47,6 +52,7 @@ public class Assets {
 
 		manager.load(MAN_TEXTURE);
 		manager.load(MOSQUITO_TEXTURE);
+		manager.load(MOSQUITO_TEXTUREATLAS);
 	}
 
     public static void afterLoaded() {

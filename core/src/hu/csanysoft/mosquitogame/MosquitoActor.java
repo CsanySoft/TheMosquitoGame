@@ -64,7 +64,7 @@ public class MosquitoActor extends OneSpriteStaticActor {
                 if(((ManActor) actor).getId()==0) {
                     if(((ManActor) actor).overlaps(ShapeType.Rectangle, this)) {
                         if(differentSpeeds) setSpeed(rightSpeed);
-                        else setSpeed(speed);
+                        else setSpeed(0-speed);
                     }
                 } else if (((ManActor) actor).getId()==1) {
                     if(((ManActor) actor).overlaps(ShapeType.Rectangle, this)) {

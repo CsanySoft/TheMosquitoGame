@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
 import hu.csanysoft.mosquitogame.GlobalClasses.Assets;
 import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.MyActor;
@@ -63,10 +64,11 @@ public class LoadingScreen extends MyScreen {
     @Override
     public void resize(int width, int height) {
         super.resize(width, height);
-        width = 1024;
-        height = 768;
+        //width = 1024 * width/1024;
+        //height = 768;
+        loadingStage.resize(width, height);
 
-        loadingStage.getViewport().update(width, height, false);
+        loadingStage.getViewport().update(width, height, true);
 
         screenBg.setSize(width, height);
 
@@ -98,7 +100,7 @@ public class LoadingScreen extends MyScreen {
 
         if(Assets.manager.update()) {
             if(Gdx.input.isTouched()) {
-                game.setScreen(new InputScreen(game));
+                game.setScreen(new MenuScreen(game));
             }
         }
 

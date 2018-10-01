@@ -1,6 +1,7 @@
 package hu.csanysoft.mosquitogame;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -9,18 +10,24 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import hu.csanysoft.mosquitogame.GlobalClasses.Assets;
 import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.MyStage;
 import hu.csanysoft.mosquitogame.MyBaseClasses.UI.MyButton;
 
 public class MenuStage extends MyStage {
 
     TextButton btnStart, btnExit;
-    Music hatterzene;
+    Music hatterzene = Assets.manager.get(Assets.MUSIC_MENU);
     final TheMosquitoGame gameFinal;
 
     public MenuStage(Batch batch, TheMosquitoGame game) {
         super(new ExtendViewport(1024f, 768f), batch, game);
         this.gameFinal = game;
+
+        hatterzene.setVolume(2.5f);
+        hatterzene.setLooping(true);
+        hatterzene.play();
+
         btnStart = new MyButton("", game.btnStart());
         btnStart.addListener(new ClickListener() {
 
@@ -29,7 +36,7 @@ public class MenuStage extends MyStage {
             public void clicked(InputEvent event, float x, float y) {
 
                 super.clicked(event, x, y);
-
+                hatterzene.stop();
                 gameFinal.setScreen(new GameScreen(gameFinal));
 
             }
@@ -46,7 +53,7 @@ public class MenuStage extends MyStage {
             public void clicked(InputEvent event, float x, float y) {
 
                 super.clicked(event, x, y);
-
+                hatterzene.stop();
                 Gdx.app.exit();
 
             }

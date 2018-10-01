@@ -2,6 +2,7 @@ package hu.csanysoft.mosquitogame;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.MyStage;
 

@@ -52,6 +52,7 @@ public class GameStage extends MyStage {
         addActor(mosquitoActor);
 
         addListener(new ClickListener(){
+
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);

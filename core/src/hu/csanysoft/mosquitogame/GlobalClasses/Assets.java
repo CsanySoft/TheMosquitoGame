@@ -5,6 +5,7 @@ import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -72,6 +73,9 @@ public class Assets {
 
 			= new AssetDescriptor<Texture>("pictures/exit_down.png", Texture.class);
 
+	public static final AssetDescriptor<Music> MUSIC_MENU
+			= new AssetDescriptor<Music>("sounds/FrogTown.mp3", Music.class);
+
 
     public static void prepare() {
 		manager = new AssetManager();
@@ -97,6 +101,8 @@ public class Assets {
 		manager.load(BTN_EXIT_TEXTURE);
 
 		manager.load(BTN_EXIT_DOWN_TEXTURE);
+
+		manager.load(MUSIC_MENU);
 	}
 
     public static void afterLoaded() {

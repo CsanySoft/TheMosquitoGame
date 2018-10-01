@@ -30,8 +30,8 @@ public class GameStage extends MyStage {
         speedManB= .4f;
         speedMosquito= 6f;
         posB=posA+length;
-        travelLength=1000;
-        wind = .5f; //Pozitív=jobbra fúj a szél, negatív = balra fúj a szél. Nem lehet nagyobb vagy egyenlő, mint a szúnyog sebességének fele
+        travelLength=2000;
+        //wind = .0f; //Pozitív=jobbra fúj a szél, negatív = balra fúj a szél. Nem lehet nagyobb vagy egyenlő, mint a szúnyog sebességének fele
 
         speedMan = 0; //Nincs használva ha különböző a két ember sebessége
 
@@ -40,9 +40,9 @@ public class GameStage extends MyStage {
         manActor2 = new ManActor(Assets.manager.get(Assets.MAN_TEXTURE), posB+manActor1.getWidth(), 0-speedManB);
         manActor2.setId((short)1);
         manActor2.setFlip(true, false);
-        mosquitoActor = new MosquitoActor(Assets.manager.get(Assets.MOSQUITO_TEXTURE),posA,speedMosquito, mosquitoWidth, true);
-        mosquitoActor.setRightSpeed(speedMosquito+wind);
-        mosquitoActor.setLeftSpeed(0-speedMosquito+wind);
+        mosquitoActor = new MosquitoActor(Assets.manager.get(Assets.MOSQUITO_TEXTURE),posA,speedMosquito, mosquitoWidth, false);
+        //mosquitoActor.setRightSpeed(speedMosquito+wind);
+        //mosquitoActor.setLeftSpeed(0-speedMosquito+wind);
 
         canGo=false;  end = false;
         if(!canGo)mosquitoActor.setSpeed(0);
@@ -60,7 +60,7 @@ public class GameStage extends MyStage {
             }
         });
 
-        lengthToStart = c.getLenghtToStart(mosquitoWidth,speedManA, speedManB,mosquitoActor.getLeftSpeed(), mosquitoActor.getRightSpeed(),travelLength);
+        lengthToStart = c.getLenghtToStart(mosquitoWidth,speedManA, speedManB,speedMosquito,travelLength);
         mosquitoActor.setSpeed(speedMosquito);
         fitWorldToWidth();//Különböző méretű képernyők miatt
     }

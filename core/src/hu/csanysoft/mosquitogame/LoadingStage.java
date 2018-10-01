@@ -10,11 +10,24 @@ public class LoadingStage extends MyStage {
     public LoadingStage(Batch batch, TheMosquitoGame game) {
         super(new ExtendViewport(1024f,768f), batch, game);
         System.out.println("Kész");
+        fitWorldToWidth();
     }
 
     @Override
     public void init() {
 
+    }
+
+    @Override
+    public void setViewport(Viewport viewport){
+        super.setViewport(viewport);
+    }
+
+    @Override
+    public void resize(int screenWidth, int screenHeight) {
+        super.resize(screenWidth, screenHeight);
+        System.out.println("fkfk");
+        fitWorldToWidth();
     }
 
     @Override

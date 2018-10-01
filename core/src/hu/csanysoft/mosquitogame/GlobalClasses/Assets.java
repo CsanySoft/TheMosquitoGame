@@ -26,11 +26,51 @@ public class Assets {
 	public static AssetManager manager;
 	public static final String CHARS = "0123456789öüóqwertzuiopőúasdfghjkléáűíyxcvbnm'+!%/=()ÖÜÓQWERTZUIOPŐÚASDFGHJKLÉÁŰÍYXCVBNM?:_*<>#&@{}[],-.";
 
+	static final FreetypeFontLoader.FreeTypeFontLoaderParameter fontParameter = new FreetypeFontLoader.FreeTypeFontLoaderParameter();
+
+	static {
+
+		fontParameter.fontFileName = "arial.ttf";
+
+		fontParameter.fontParameters.size = 30;
+
+		fontParameter.fontParameters.characters = CHARS;
+
+		fontParameter.fontParameters.color = Color.WHITE;
+
+	}
+
+	public static final AssetDescriptor<BitmapFont> ARIAL_30_FONT
+			= new AssetDescriptor<BitmapFont>(fontParameter.fontFileName, BitmapFont.class, fontParameter);
+
 	public static final AssetDescriptor<Texture> MAN_TEXTURE
 			= new AssetDescriptor<Texture>("pictures/man.gif", Texture.class);
 
 	public static final AssetDescriptor<Texture> MOSQUITO_TEXTURE
 			= new AssetDescriptor<Texture>("pictures/mosquito.png", Texture.class);
+
+
+	public static final AssetDescriptor<Texture> BTN_START_DOWN_TEXTURE
+
+			= new AssetDescriptor<Texture>("pictures/start_down.png", Texture.class);
+
+
+
+	public static final AssetDescriptor<Texture> BTN_START_TEXTURE
+
+			= new AssetDescriptor<Texture>("pictures/start.png", Texture.class);
+
+
+
+	public static final AssetDescriptor<Texture> BTN_EXIT_TEXTURE
+
+			= new AssetDescriptor<Texture>("pictures/exit.png", Texture.class);
+
+
+
+	public static final AssetDescriptor<Texture> BTN_EXIT_DOWN_TEXTURE
+
+			= new AssetDescriptor<Texture>("pictures/exit_down.png", Texture.class);
 
 
     public static void prepare() {
@@ -47,6 +87,16 @@ public class Assets {
 
 		manager.load(MAN_TEXTURE);
 		manager.load(MOSQUITO_TEXTURE);
+
+		manager.load(ARIAL_30_FONT);
+
+		manager.load(BTN_START_TEXTURE);
+
+		manager.load(BTN_START_DOWN_TEXTURE);
+
+		manager.load(BTN_EXIT_TEXTURE);
+
+		manager.load(BTN_EXIT_DOWN_TEXTURE);
 	}
 
     public static void afterLoaded() {

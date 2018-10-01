@@ -5,30 +5,32 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import hu.csanysoft.mosquitogame.GlobalClasses.Assets;
 import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.MyActor;
+import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.OneSpriteAnimatedActor;
 import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.ShapeType;
 
-public class MosquitoActor extends OneSpriteStaticActor {
+public class MosquitoActor extends OneSpriteAnimatedActor {
 
     float pos, speed, travelledLength, rightSpeed, leftSpeed;
     boolean differentSpeeds;
 
     /**
      *
-     * @param texture A szúnyog textúrája
+     *
      * @param pos Indulási pozíció
      * @param speed A szúnyog sebessége
      * @param width A szúnyog szélessége
      */
 
-    public MosquitoActor(Texture texture, float pos, float speed, float width, boolean differentSpeeds) {
-        super(texture);
+    public MosquitoActor(float pos, float speed, float width, boolean differentSpeeds) {
+        super(Assets.manager.get(Assets.MOSQUITO_TEXTUREATLAS));
         this.pos = pos;
         this.speed = speed;
         setPosition(pos, 100);
         setSize(width, width);
         travelledLength=0;
         this.differentSpeeds = differentSpeeds;
+        setFps(24);
     }
 
     public float getLeftSpeed() {

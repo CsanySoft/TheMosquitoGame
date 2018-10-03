@@ -16,7 +16,7 @@ import hu.csanysoft.mosquitogame.MyBaseClasses.UI.MyButton;
 
 public class MenuStage extends MyStage {
 
-    TextButton btnStart, btnExit;
+    TextButton btnStart, btnExit, btnInput;
     Music hatterzene = Assets.manager.get(Assets.MUSIC_MENU);
     final TheMosquitoGame gameFinal;
 
@@ -43,7 +43,7 @@ public class MenuStage extends MyStage {
 
         });
         addActor(btnStart);
-        btnStart.setPosition(getWidth()/2-btnStart.getWidth()/2,getHeight()/2+btnStart.getHeight());
+        btnStart.setPosition(getWidth() / 2 - btnStart.getWidth() / 2, getHeight() / 2 + btnStart.getHeight());
 
         btnExit = new MyButton("", game.btnExit());
         btnExit.addListener(new ClickListener() {
@@ -60,7 +60,21 @@ public class MenuStage extends MyStage {
 
         });
         addActor(btnExit);
-        btnExit.setPosition(getWidth()/2-btnExit.getWidth()/2,getHeight()/2-btnExit.getHeight());
+        btnExit.setPosition(getWidth() / 2 - btnExit.getWidth() / 2, getHeight() / 2 - btnExit.getHeight());
+        btnInput = new MyButton("input teszt", game.btnStart());
+        btnInput.addListener(new ClickListener() {
+
+            @Override
+
+            public void clicked(InputEvent event, float x, float y) {
+
+                super.clicked(event, x, y);
+                gameFinal.setScreen(new InputScreen(gameFinal));
+            }
+
+        });
+        btnInput.setPosition(getWidth() / 2 - btnInput.getWidth() / 2, getHeight() / 2 + btnInput.getHeight()*2);
+        addActor(btnInput);
     }
 
     @Override

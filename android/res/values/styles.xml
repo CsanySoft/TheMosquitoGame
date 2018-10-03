@@ -1,5 +1,5 @@
-<resources>
-
+<resources xmlns:tools="http://schemas.android.com/tools">
+<!--
     <style name="GdxTheme" parent="android:Theme">
 		<item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
@@ -8,5 +8,13 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowFullscreen">true</item>
     </style>
-
+-->
+        <style name="GdxTheme" parent="android:Theme.DeviceDefault" tools:ignore="NewApi">
+            <item name="android:windowBackground">@android:color/transparent</item>
+            <item name="android:colorBackgroundCacheHint">@null</item>
+            <item name="android:windowAnimationStyle">@android:style/Animation</item>
+            <item name="android:windowNoTitle">true</item>
+            <item name="android:windowContentOverlay">@null</item>
+            <item name="android:windowFullscreen">true</item>
+        </style>
 </resources>

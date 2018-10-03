@@ -20,7 +20,6 @@ public class GameStage extends MyStage {
     MosquitoActor mosquitoActor;
     boolean canGo, end, once;
     OneSpriteStaticActor bg;
-    boolean canGo, end;
 
     public GameStage(Batch batch, TheMosquitoGame game) {
         super(new ExtendViewport(1024f,768f), batch, game);

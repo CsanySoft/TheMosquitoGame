@@ -71,6 +71,13 @@ public class TheMosquitoGame extends MyGame {
 		return style;
 	}
 
+	static public class FloatNumberFilter implements TextField.TextFieldFilter{
+        @Override
+        public boolean acceptChar(TextField textField, char c) {
+            return Character.isDigit(c) || c == '.' || c == ',' || c == '-';
+        }
+    }
+
 	@Override
 	public void create () {
 		Assets.prepare();

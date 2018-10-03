@@ -31,13 +31,13 @@ public class GameStage extends MyStage {
 
         posA=100;
         length = 500;
-        mosquitoWidth= 100;
-        speedManA= .1f;
-        speedManB= .2f;
-        speedMosquito=  1;
+        mosquitoWidth= 20;
+        speedManA= .2f;
+        speedManB= .4f;
+        speedMosquito= 6f;
         posB=posA+length;
-        travelLength=1000000;
-        wind = 0; //Pozitív=jobbra fúj a szél, negatív = balra fúj a szél. Nem lehet nagyobb vagy egyenlő, mint a szúnyog sebességének fele
+        travelLength=2000;
+        wind = .2f; //Pozitív=jobbra fúj a szél, negatív = balra fúj a szél. Nem lehet nagyobb vagy egyenlő, mint a szúnyog sebességének fele
 
         speedMan = 0; //Nincs használva ha különböző a két ember sebessége
 
@@ -46,7 +46,7 @@ public class GameStage extends MyStage {
         manActor2 = new ManActor(Assets.manager.get(Assets.MAN_TEXTURE), posB+manActor1.getWidth(), 0-speedManB);
         manActor2.setId((short)1);
         manActor2.setFlip(true, false);
-        mosquitoActor = new MosquitoActor(posA,speedMosquito, mosquitoWidth, false);
+        mosquitoActor = new MosquitoActor(posA,speedMosquito, mosquitoWidth, true);
         //mosquitoActor.setRightSpeed(speedMosquito+wind);
         //mosquitoActor.setLeftSpeed(0-speedMosquito+wind);
 

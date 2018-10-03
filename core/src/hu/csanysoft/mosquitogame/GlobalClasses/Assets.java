@@ -47,6 +47,9 @@ public class Assets {
 	public static final AssetDescriptor<Texture> MAN_TEXTURE
 			= new AssetDescriptor<Texture>("pictures/man.gif", Texture.class);
 
+	public static final AssetDescriptor<Texture> MAN666_TEXTURE
+			= new AssetDescriptor<Texture>("pictures/man666.gif", Texture.class);
+
 	public static final AssetDescriptor<Texture> MOSQUITO_TEXTURE
 			= new AssetDescriptor<Texture>("pictures/Moszkito/szunyog.png", Texture.class);
 
@@ -71,6 +74,9 @@ public class Assets {
 	public static final AssetDescriptor<Music> MUSIC_MENU
 			= new AssetDescriptor<Music>("sounds/FrogTown.mp3", Music.class);
 
+	public static final AssetDescriptor<Music>  MSUSIC_AMENO
+			= new AssetDescriptor<Music>("sounds/Ameno.mp3", Music.class);
+
 
     public static void prepare() {
 		manager = new AssetManager();
@@ -83,6 +89,9 @@ public class Assets {
 		manager.setLoader(BitmapFont.class, ".ttf", new FreetypeFontLoader(resolver));
 		manager.setLoader(BitmapFont.class, ".otf", new FreetypeFontLoader(resolver));
 
+
+		manager.load(MAN666_TEXTURE);
+		manager.load(MSUSIC_AMENO);
 
 		manager.load(MAN_TEXTURE);
 		manager.load(MOSQUITO_TEXTURE);

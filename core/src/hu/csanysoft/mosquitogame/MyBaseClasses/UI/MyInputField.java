@@ -1,6 +1,7 @@
 package hu.csanysoft.mosquitogame.MyBaseClasses.UI;
 
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 
 import hu.csanysoft.mosquitogame.TheMosquitoGame;
 
@@ -8,10 +9,11 @@ public class MyInputField extends MyTextField implements Input.TextInputListener
 
     TextFieldStyle validStyle, invalidStyle;
 
-    public MyInputField(String text, TextFieldStyle validStyle, TextFieldStyle invalidStyle) {
-        super(text, validStyle);
+    public MyInputField(String placeholder, TextFieldStyle validStyle, TextFieldStyle invalidStyle) {
+        super(placeholder, validStyle);
         this.validStyle = validStyle;
         this.invalidStyle = invalidStyle;
+        setTextFieldFilter(new TheMosquitoGame.FloatNumberFilter());
     }
 
     @Override
@@ -31,5 +33,9 @@ public class MyInputField extends MyTextField implements Input.TextInputListener
 
     public void setDataValidity(boolean valid){
         this.setStyle(valid ? validStyle : invalidStyle);
+    }
+
+    void keyTyped(MyInputField myInputField,char c){
+
     }
 }

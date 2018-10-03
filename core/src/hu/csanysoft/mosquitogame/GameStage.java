@@ -1,5 +1,6 @@
 package hu.csanysoft.mosquitogame;
 
+import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -8,6 +9,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hu.csanysoft.mosquitogame.GlobalClasses.Assets;
 import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.MyStage;
+import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.ShapeType;
 
 public class GameStage extends MyStage {
@@ -16,10 +18,14 @@ public class GameStage extends MyStage {
     Calcuations c;
     ManActor manActor1, manActor2;
     MosquitoActor mosquitoActor;
+    OneSpriteStaticActor bg;
     boolean canGo, end;
 
     public GameStage(Batch batch, TheMosquitoGame game) {
         super(new ExtendViewport(1024f,768f), batch, game);
+
+        bg =  new OneSpriteStaticActor(Assets.manager.get(Assets.BACKGROUND_TEXTURE));
+        addActor(bg);
 
         c = new Calcuations();
 

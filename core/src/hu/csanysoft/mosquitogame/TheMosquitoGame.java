@@ -2,11 +2,14 @@ package hu.csanysoft.mosquitogame;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 import hu.csanysoft.mosquitogame.GlobalClasses.Assets;
@@ -47,6 +50,25 @@ public class TheMosquitoGame extends MyGame {
 
 		return textButtonStyle;
 
+	}
+
+	public TextField.TextFieldStyle getTextFieldStyle_Black() {
+		// TODO: 1/5/2018 textfield texture
+		TextField.TextFieldStyle style = new TextField.TextFieldStyle();
+		//style.background.setLeftWidth(style.background.getLeftWidth()+20);
+		//style.background.setRightWidth(style.background.getRightWidth()+20);
+		style.font = Assets.manager.get(Assets.ARIAL_30_FONT);
+		style.fontColor = Color.BLACK;
+		return style;
+	}
+	public TextField.TextFieldStyle getTextFieldStyle_Red() {
+		// TODO: 1/5/2018 textfield texture
+		TextField.TextFieldStyle style = new TextField.TextFieldStyle();
+		//style.background.setLeftWidth(style.background.getLeftWidth()+20);
+		//style.background.setRightWidth(style.background.getRightWidth()+20);
+		style.font = Assets.manager.get(Assets.ARIAL_30_FONT);
+		style.fontColor = Color.RED;
+		return style;
 	}
 
 	@Override

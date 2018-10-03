@@ -1,6 +1,7 @@
 package hu.csanysoft.mosquitogame;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import hu.csanysoft.mosquitogame.GlobalClasses.Assets;
@@ -35,6 +36,7 @@ public class MosquitoActor extends OneSpriteAnimatedActor {
             rightSpeed =speed;
             leftSpeed = 0-speed;
         }
+
     }
 
     public float getLeftSpeed() {
@@ -62,8 +64,10 @@ public class MosquitoActor extends OneSpriteAnimatedActor {
     public void act(float delta) {
         super.act(delta);
 
+        if(!(((GameStage)getStage()).canGo)) setFps(0);
+        else setFps(Math.abs(speed*8));
 
-        System.out.println("travelledLength = " + travelledLength);
+        //System.out.println("travelledLength = " + travelledLength);
         for(Actor actor : getStage().getActors()) {
             actor = actor;
             if(actor instanceof ManActor) {

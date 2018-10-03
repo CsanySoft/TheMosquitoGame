@@ -31,6 +31,10 @@ public class MosquitoActor extends OneSpriteAnimatedActor {
         travelledLength=0;
         this.differentSpeeds = differentSpeeds;
         setFps(24);
+        if(!differentSpeeds) {
+            rightSpeed =speed;
+            leftSpeed = 0-speed;
+        }
     }
 
     public float getLeftSpeed() {
@@ -57,24 +61,25 @@ public class MosquitoActor extends OneSpriteAnimatedActor {
     @Override
     public void act(float delta) {
         super.act(delta);
-        setX(getX() + speed);
-        if(speed!=0 && ((GameStage)getStage()).canGo && !(((GameStage)getStage()).end)) travelledLength+=Math.abs(speed);
+
+
         System.out.println("travelledLength = " + travelledLength);
         for(Actor actor : getStage().getActors()) {
             actor = actor;
             if(actor instanceof ManActor) {
                 if(((ManActor) actor).getId()==0) {
                     if(((ManActor) actor).overlaps(ShapeType.Rectangle, this)) {
-                        if(differentSpeeds) setSpeed(rightSpeed);
-                        else setSpeed(0-speed);
+                        setSpeed(rightSpeed);
                     }
                 } else if (((ManActor) actor).getId()==1) {
+
                     if(((ManActor) actor).overlaps(ShapeType.Rectangle, this)) {
-                        if(differentSpeeds) setSpeed(leftSpeed);
-                        else setSpeed(0-speed);
+                        setSpeed(leftSpeed);
                     }
                 }
             }
         }
+        setX(getX() + speed);
+        if(speed!=0 && ((GameStage)getStage()).canGo && !(((GameStage)getStage()).end)) travelledLength+=Math.abs(speed);
     }
 }

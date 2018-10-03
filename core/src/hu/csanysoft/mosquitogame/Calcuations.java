@@ -27,7 +27,13 @@ public class Calcuations {
 
     public float getLenghtToStart(float mosquitoWidth, float speedManA, float speedManB, float speedMosquito, float travelLength) {
         float speedMan = speedManA + speedManB;
-        return (((travelLength+speedMosquito)*(5*speedMan) + 5*speedMan + (5*speedMosquito*mosquitoWidth))/speedMosquito)*((speedMan)/(speedMan*5)) - speedMosquito/10;
+        float calc = (((travelLength+speedMosquito)*(5*speedMan) + 5*speedMan + (5*speedMosquito*mosquitoWidth))/speedMosquito)*((speedMan)/(speedMan*5)) - speedMosquito/10;
+        System.out.println("calc = " + calc);
+        System.out.println("(float)Math.ceil(calc) = " + (float)Math.ceil(calc));
+        if(calc == (float)Math.floor(calc)) {
+            System.out.println("dhusngxdnxgjvhjkf");
+        }
+        return calc;
     }
 
     /**

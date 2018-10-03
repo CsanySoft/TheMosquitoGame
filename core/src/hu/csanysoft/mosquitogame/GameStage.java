@@ -16,7 +16,7 @@ public class GameStage extends MyStage {
     Calcuations c;
     ManActor manActor1, manActor2;
     MosquitoActor mosquitoActor;
-    boolean canGo, end;
+    boolean canGo, end, once;
 
     public GameStage(Batch batch, TheMosquitoGame game) {
         super(new ExtendViewport(1024f,768f), batch, game);
@@ -31,7 +31,7 @@ public class GameStage extends MyStage {
         speedMosquito= 6f;
         posB=posA+length;
         travelLength=2000;
-        //wind = .0f; //Pozitív=jobbra fúj a szél, negatív = balra fúj a szél. Nem lehet nagyobb vagy egyenlő, mint a szúnyog sebességének fele
+        wind = .2f; //Pozitív=jobbra fúj a szél, negatív = balra fúj a szél. Nem lehet nagyobb vagy egyenlő, mint a szúnyog sebességének fele
 
         speedMan = 0; //Nincs használva ha különböző a két ember sebessége
 
@@ -40,7 +40,7 @@ public class GameStage extends MyStage {
         manActor2 = new ManActor(Assets.manager.get(Assets.MAN_TEXTURE), posB+manActor1.getWidth(), 0-speedManB);
         manActor2.setId((short)1);
         manActor2.setFlip(true, false);
-        mosquitoActor = new MosquitoActor(posA,speedMosquito, mosquitoWidth, false);
+        mosquitoActor = new MosquitoActor(posA,speedMosquito, mosquitoWidth, true);
         //mosquitoActor.setRightSpeed(speedMosquito+wind);
         //mosquitoActor.setLeftSpeed(0-speedMosquito+wind);
 
@@ -75,15 +75,19 @@ public class GameStage extends MyStage {
     public void act(float delta) {
         super.act(delta);
 
-        float travellableDistance = (((length/((speedMan*2)/(speedMan*10)))*speedMosquito-mosquitoWidth*(speedMosquito*5)) - 10*speedMan)/(10*speedMan)-speedMosquito;
+        //float travellableDistance = (((length/((speedMan*2)/(speedMan*10)))*speedMosquito-mosquitoWidth*(speedMosquito*5)) - 10*speedMan)/(10*speedMan)-speedMosquito;
 
 
         if(!canGo) {
-            mosquitoActor.setX(manActor1.getX() + manActor1.getWidth());
+            mosquitoActor.setX(manActor1.getX() + manActor1.getWidth()+1);
         }
         length = manActor2.getX()-manActor1.getX()-manActor1.getWidth();
         if(length<=lengthToStart){
             canGo=true;
+            if(once) {
+                mosquitoActor.setSpeed(speedMosquito);
+                once=false;
+            }
         }
         //System.out.println("canGo = " + canGo);
         //System.out.println("speedMosquito = " + speedMosquito);
@@ -98,6 +102,7 @@ public class GameStage extends MyStage {
             manActor2.setSpeed(0);
             mosquitoActor.setSpeed(0);
             end = true;
+            if(travelLength-mosquitoActor.travelledLength <= 5 && travelLength-mosquitoActor.travelledLength >= -5) mosquitoActor.travelledLength = travelLength;
         }
     }
 }

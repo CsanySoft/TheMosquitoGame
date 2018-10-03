@@ -20,7 +20,6 @@ public class GameStage extends MyStage {
     MosquitoActor mosquitoActor;
     boolean canGo, end, once;
     OneSpriteStaticActor bg;
-    boolean canGo, end;
 
     public GameStage(Batch batch, TheMosquitoGame game) {
         super(new ExtendViewport(1024f,768f), batch, game);
@@ -48,8 +47,8 @@ public class GameStage extends MyStage {
         manActor2.setId((short)1);
         manActor2.setFlip(true, false);
         mosquitoActor = new MosquitoActor(posA,speedMosquito, mosquitoWidth, true);
-        //mosquitoActor.setRightSpeed(speedMosquito+wind);
-        //mosquitoActor.setLeftSpeed(0-speedMosquito+wind);
+        mosquitoActor.setRightSpeed(speedMosquito+wind);
+        mosquitoActor.setLeftSpeed(0-speedMosquito+wind);
 
         canGo=false;  end = false;
         if(!canGo)mosquitoActor.setSpeed(0);

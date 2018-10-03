@@ -19,6 +19,10 @@ public class OneSpriteAnimatedActor extends OneSpriteActor {
     private int prevFrame = 0;
 
 
+    public void flip(){
+        sprite.setFlip(true,false);
+    }
+
     public boolean isLooping() {
         return looping;
     }

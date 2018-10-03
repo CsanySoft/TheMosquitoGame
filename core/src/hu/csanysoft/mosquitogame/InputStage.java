@@ -18,17 +18,17 @@ public class InputStage extends MyStage{
     }//todo: megcsinálni az adatok bekérését, és hibás adatok visszadobása
     @Override
     public void init() {
-        szunyogseb = new MyInputField("Szúnyog sebesség",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red());
+        szunyogseb = new MyInputField("Szúnyog sebesség: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red());
         szunyogseb.setPosition(100, 700);
-        ember1seb = new MyInputField("Ember 1 sebesség",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red());
+        ember1seb = new MyInputField("Ember 1 sebesség: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red());
         ember1seb.setPosition(100, 500);
-        ember2seb = new MyInputField("Ember 2 sebesség",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red());
+        ember2seb = new MyInputField("Ember 2 sebesség: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red());
         ember2seb.setPosition(100, 300);
-        szunyogtav = new MyInputField("Szúnyog távolság",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red());
+        szunyogtav = new MyInputField("Szúnyog távolság: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red());
         szunyogtav.setPosition(600, 700);
-        embertav = new MyInputField("Emberek közti táv",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red());
+        embertav = new MyInputField("Emberek közti táv: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red());
         embertav.setPosition(600, 500);
-        szel = new MyInputField("Szél",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red());
+        szel = new MyInputField("Szél: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red());
         szel.setPosition(600, 300);
         addActor(szunyogseb);
         addActor(ember1seb);

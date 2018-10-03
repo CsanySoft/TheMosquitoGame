@@ -11,17 +11,21 @@ import hu.csanysoft.mosquitogame.TheMosquitoGame;
 public class MyInputField extends MyTextField {
 
     TextFieldStyle validStyle, invalidStyle;
+    String placeholder;
+    private float value = 0;
 
     public MyInputField(final String placeholder, TextFieldStyle validStyle, TextFieldStyle invalidStyle) {
-        super(placeholder, validStyle);
+        super(placeholder+0, validStyle);
         this.validStyle = validStyle;
         this.invalidStyle = invalidStyle;
-        setTextFieldFilter(new TheMosquitoGame.FloatNumberFilter());
+        this.placeholder = placeholder;
+        setWidth(500);
+        //setTextFieldFilter(new TheMosquitoGame.FloatNumberFilter());
         addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                Gdx.input.getTextInput(textListener, placeholder+": ", "0", "");
+                Gdx.input.getTextInput(textListener, placeholder, "", "Adj meg egy értéket");
             }
         });
     }
@@ -37,14 +41,22 @@ public class MyInputField extends MyTextField {
         this.setStyle(valid ? validStyle : invalidStyle);
     }
 
-    void keyTyped(MyInputField myInputField,char c){
-
+    public float getValue() {
+        return value;
     }
 
     Input.TextInputListener textListener = new Input.TextInputListener() {
         @Override
         public void input(String text) {
-            System.out.println(text);
+            try{
+                value = Float.parseFloat(text.replace(',', '.'));
+                setDataValidity(true);
+                if(value %1 == 0) setText(placeholder + (int)(value));
+                else setText(placeholder+value);
+            }catch(Exception e){
+                e.printStackTrace();
+                setDataValidity(false);
+            }
         }
 
         @Override

@@ -50,32 +50,22 @@ public class Assets {
 	public static final AssetDescriptor<Texture> MOSQUITO_TEXTURE
 			= new AssetDescriptor<Texture>("pictures/Moszkito/szunyog.png", Texture.class);
 
+	public static final AssetDescriptor<Texture> BACKGROUND_TEXTURE
+			= new AssetDescriptor<Texture>("pictures/background.png", Texture.class);
+
 	public static final AssetDescriptor<TextureAtlas> MOSQUITO_TEXTUREATLAS
 			= new AssetDescriptor<TextureAtlas>("pictures/Moszkito/szunyog.atlas", TextureAtlas.class);
 
-	// TODO: 2018. 10. 01. Atlasz számítást tesztelni
-
-
 	public static final AssetDescriptor<Texture> BTN_START_DOWN_TEXTURE
-
 			= new AssetDescriptor<Texture>("pictures/start_down.png", Texture.class);
 
-
-
 	public static final AssetDescriptor<Texture> BTN_START_TEXTURE
-
 			= new AssetDescriptor<Texture>("pictures/start.png", Texture.class);
 
-
-
 	public static final AssetDescriptor<Texture> BTN_EXIT_TEXTURE
-
 			= new AssetDescriptor<Texture>("pictures/exit.png", Texture.class);
 
-
-
 	public static final AssetDescriptor<Texture> BTN_EXIT_DOWN_TEXTURE
-
 			= new AssetDescriptor<Texture>("pictures/exit_down.png", Texture.class);
 
 	public static final AssetDescriptor<Music> MUSIC_MENU
@@ -108,7 +98,10 @@ public class Assets {
 		manager.load(BTN_EXIT_DOWN_TEXTURE);
 
 		manager.load(MUSIC_MENU);
+
 		manager.load(MOSQUITO_TEXTUREATLAS);
+
+		manager.load(BACKGROUND_TEXTURE);
 	}
 
     public static void afterLoaded() {

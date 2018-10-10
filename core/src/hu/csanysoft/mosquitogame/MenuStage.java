@@ -18,6 +18,7 @@ public class MenuStage extends MyStage {
 
     TextButton btnStart, btnExit, btnInput;
     Music hatterzene = Assets.manager.get(Assets.MUSIC_MENU);
+    Music gombSound = Assets.manager.get(Assets.MUSIC_CLICK);
     final TheMosquitoGame gameFinal;
 
     public MenuStage(Batch batch, TheMosquitoGame game) {
@@ -36,6 +37,7 @@ public class MenuStage extends MyStage {
             public void clicked(InputEvent event, float x, float y) {
 
                 super.clicked(event, x, y);
+                gombSound.play();
                 hatterzene.stop();
                 gameFinal.setScreen(new GameScreen(gameFinal));
 
@@ -53,6 +55,7 @@ public class MenuStage extends MyStage {
             public void clicked(InputEvent event, float x, float y) {
 
                 super.clicked(event, x, y);
+                gombSound.play();
                 hatterzene.stop();
                 Gdx.app.exit();
 
@@ -69,6 +72,7 @@ public class MenuStage extends MyStage {
             public void clicked(InputEvent event, float x, float y) {
 
                 super.clicked(event, x, y);
+                gombSound.play();
                 gameFinal.setScreen(new InputScreen(gameFinal));
             }
 

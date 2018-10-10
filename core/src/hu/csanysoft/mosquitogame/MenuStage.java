@@ -18,6 +18,7 @@ public class MenuStage extends MyStage {
 
     TextButton btnStart, btnExit, btnInput;
     Music hatterzene = Assets.manager.get(Assets.MUSIC_MENU);
+    Music gombSound = Assets.manager.get(Assets.MUSIC_CLICK);
     final TheMosquitoGame gameFinal;
 
     public MenuStage(Batch batch, TheMosquitoGame game) {
@@ -36,6 +37,7 @@ public class MenuStage extends MyStage {
             public void clicked(InputEvent event, float x, float y) {
 
                 super.clicked(event, x, y);
+                gombSound.play();
                 hatterzene.stop();
                 gameFinal.setScreen(new GameScreen(gameFinal));
 
@@ -43,7 +45,7 @@ public class MenuStage extends MyStage {
 
         });
         addActor(btnStart);
-        btnStart.setPosition(getWidth() / 2 - btnStart.getWidth() / 2, getHeight() / 2 + btnStart.getHeight());
+        btnStart.setPosition(getViewport().getWorldWidth() / 2 - btnStart.getWidth() / 2, getViewport().getWorldHeight() / 2 + btnStart.getHeight());
 
         btnExit = new MyButton("", game.btnExit());
         btnExit.addListener(new ClickListener() {
@@ -53,6 +55,7 @@ public class MenuStage extends MyStage {
             public void clicked(InputEvent event, float x, float y) {
 
                 super.clicked(event, x, y);
+                gombSound.play();
                 hatterzene.stop();
                 Gdx.app.exit();
 
@@ -60,7 +63,7 @@ public class MenuStage extends MyStage {
 
         });
         addActor(btnExit);
-        btnExit.setPosition(getWidth() / 2 - btnExit.getWidth() / 2, getHeight() / 2 - btnExit.getHeight());
+        btnExit.setPosition(getViewport().getWorldWidth() / 2 - btnExit.getWidth() / 2, getViewport().getWorldHeight() / 2 - btnExit.getHeight());
         btnInput = new MyButton("input teszt", game.btnStart());
         btnInput.addListener(new ClickListener() {
 
@@ -69,11 +72,12 @@ public class MenuStage extends MyStage {
             public void clicked(InputEvent event, float x, float y) {
 
                 super.clicked(event, x, y);
+                gombSound.play();
                 gameFinal.setScreen(new InputScreen(gameFinal));
             }
 
         });
-        btnInput.setPosition(getWidth() / 2 - btnInput.getWidth() / 2, getHeight() / 2 + btnInput.getHeight()*2);
+        btnInput.setPosition(getViewport().getWorldWidth() / 2 - btnInput.getWidth() / 2, getViewport().getWorldHeight() / 2 + btnInput.getHeight()*2);
         addActor(btnInput);
     }
 

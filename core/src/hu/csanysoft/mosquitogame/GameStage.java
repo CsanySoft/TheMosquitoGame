@@ -3,6 +3,7 @@ package hu.csanysoft.mosquitogame;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -19,12 +20,13 @@ public class GameStage extends MyStage {
     ManActor manActor1, manActor2;
     MosquitoActor mosquitoActor;
     boolean canGo, end, once;
-    OneSpriteStaticActor bg;
+    Image bg;
+
 
     public GameStage(Batch batch, TheMosquitoGame game) {
         super(new ExtendViewport(game.SCREEN_WIDTH,game.SCREEN_HEIGHT), batch, game);
 
-        bg =  new OneSpriteStaticActor(Assets.manager.get(Assets.BACKGROUND_TEXTURE));
+        bg = new Image(Assets.manager.get(Assets.BACKGROUND_TEXTURE));
         addActor(bg);
 
         c = new Calcuations();
@@ -37,7 +39,7 @@ public class GameStage extends MyStage {
         speedMosquito= 6f;
         posB=posA+length;
         travelLength=2000;
-        wind = .2f; //Pozitív=jobbra fúj a szél, negatív = balra fúj a szél. Nem lehet nagyobb vagy egyenlő, mint a szúnyog sebességének fele
+        wind = 3f; //Pozitív=jobbra fúj a szél, negatív = balra fúj a szél. Nem lehet nagyobb vagy egyenlő, mint a szúnyog sebességének fele
 
         speedMan = 0; //Nincs használva ha különböző a két ember sebessége
 
@@ -47,8 +49,8 @@ public class GameStage extends MyStage {
         manActor2.setId((short)1);
         manActor2.setFlip(true, false);
         mosquitoActor = new MosquitoActor(posA,speedMosquito, mosquitoWidth, true);
-        //mosquitoActor.setRightSpeed(speedMosquito+wind);
-        //mosquitoActor.setLeftSpeed(0-speedMosquito+wind);
+        mosquitoActor.setRightSpeed(speedMosquito+wind);
+        mosquitoActor.setLeftSpeed(0-speedMosquito+wind);
 
         canGo=false;  end = false;
         if(!canGo)mosquitoActor.setSpeed(0);
@@ -67,8 +69,10 @@ public class GameStage extends MyStage {
             }
         });
 
-        lengthToStart = c.getLenghtToStart(mosquitoWidth,speedManA, speedManB,speedMosquito,travelLength);
+
         mosquitoActor.setSpeed(speedMosquito);
+        speedMosquito = (mosquitoActor.getRightSpeed() + mosquitoActor.getLeftSpeed()/(wind - ((((wind) * (10*speedManB)) * speedMosquito - 1)/100)));
+        lengthToStart = c.getLenghtToStart(mosquitoWidth,speedManA, speedManB,speedMosquito,travelLength);
         fitWorldToWidth();//Különböző méretű képernyők miatt
     }
 
@@ -112,5 +116,17 @@ public class GameStage extends MyStage {
             end = true;
             if(travelLength-mosquitoActor.travelledLength <= 5 && travelLength-mosquitoActor.travelledLength >= -5) mosquitoActor.travelledLength = travelLength;
         }
+    }
+
+    @Override
+    public void resize(int screenWidth, int screenHeight) {
+        super.resize(screenWidth, screenHeight);
+
+        bg.setWidth(getViewport().getWorldWidth());
+        bg.setHeight(getViewport().getWorldHeight());
+        System.out.println("getViewport().getScreenX() = " + getViewport().getScreenX());
+        System.out.println("getViewport().getLeftGutterWidth() = " + getViewport().getLeftGutterWidth());
+        System.out.println("getViewport().getRightGutterWidth() = " + getViewport().getRightGutterWidth());
+        System.out.println("getViewport().getRightGutterX() = " + getViewport().getRightGutterX());
     }
 }

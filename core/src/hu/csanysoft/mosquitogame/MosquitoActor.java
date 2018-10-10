@@ -1,5 +1,6 @@
 package hu.csanysoft.mosquitogame;
 
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -14,6 +15,7 @@ public class MosquitoActor extends OneSpriteAnimatedActor {
 
     float pos, speed, travelledLength, rightSpeed, leftSpeed;
     boolean differentSpeeds;
+    Music flySound = Assets.manager.get(Assets.MUSIC_MOSQUITOSFX);
 
     /**
      *
@@ -33,7 +35,7 @@ public class MosquitoActor extends OneSpriteAnimatedActor {
         this.differentSpeeds = differentSpeeds;
         setFps(24);
         if(!differentSpeeds) {
-            rightSpeed =speed;
+            rightSpeed = speed;
             leftSpeed = 0-speed;
         }
 
@@ -85,5 +87,12 @@ public class MosquitoActor extends OneSpriteAnimatedActor {
         }
         setX(getX() + speed);
         if(speed!=0 && ((GameStage)getStage()).canGo && !(((GameStage)getStage()).end)) travelledLength+=Math.abs(speed);
+
+        //Ha repül akkor szól a muzsika
+        if((((GameStage) getStage()).canGo)){
+            flySound.play();
+        }else{
+            flySound.stop();
+        }
     }
 }

@@ -18,18 +18,18 @@ public class InputStage extends MyStage{
     }//todo: megcsinálni az adatok bekérését, és hibás adatok visszadobása
     @Override
     public void init() {
-        szunyogseb = new MyInputField("Szúnyog sebesség: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red());
-        szunyogseb.setPosition(100, 700);
-        ember1seb = new MyInputField("Ember 1 sebesség: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red());
-        ember1seb.setPosition(100, 500);
-        ember2seb = new MyInputField("Ember 2 sebesség: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red());
-        ember2seb.setPosition(100, 300);
-        szunyogtav = new MyInputField("Szúnyog távolság: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red());
-        szunyogtav.setPosition(600, 700);
-        embertav = new MyInputField("Emberek közti táv: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red());
-        embertav.setPosition(600, 500);
-        szel = new MyInputField("Szél: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red());
-        szel.setPosition(600, 300);
+        szunyogseb = new MyInputField("Szúnyog sebesség: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
+        szunyogseb.setPosition(10, 700);
+        ember1seb = new MyInputField("Ember 1 sebesség: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
+        ember1seb.setPosition(10, 500);
+        ember2seb = new MyInputField("Ember 2 sebesség: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
+        ember2seb.setPosition(10, 300);
+        szunyogtav = new MyInputField("Szúnyog távolság: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
+        szunyogtav.setPosition(500, 700);
+        embertav = new MyInputField("Emberek közti táv: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
+        embertav.setPosition(500, 500);
+        szel = new MyInputField("Szél: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.FLOAT);
+        szel.setPosition(500, 300);
         addActor(szunyogseb);
         addActor(ember1seb);
         addActor(ember2seb);

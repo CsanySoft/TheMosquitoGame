@@ -10,15 +10,22 @@ import hu.csanysoft.mosquitogame.TheMosquitoGame;
 
 public class MyInputField extends MyTextField {
 
+    public enum InputMode {TEXT, FLOAT, DECIMAL, POSITIVE_FlOAT_ONLY, POSITIVE_DECIMAL_ONLY};
+
+
     TextFieldStyle validStyle, invalidStyle;
     String placeholder;
     private float value = 0;
+    InputMode inputMode;
+    private boolean valid = true;
 
-    public MyInputField(final String placeholder, TextFieldStyle validStyle, TextFieldStyle invalidStyle) {
+
+    public MyInputField(final String placeholder, TextFieldStyle validStyle, TextFieldStyle invalidStyle, InputMode inputMode) {
         super(placeholder+0, validStyle);
         this.validStyle = validStyle;
         this.invalidStyle = invalidStyle;
         this.placeholder = placeholder;
+        this.inputMode = inputMode;
         setWidth(500);
         //setTextFieldFilter(new TheMosquitoGame.FloatNumberFilter());
         addListener(new ClickListener(){
@@ -28,6 +35,7 @@ public class MyInputField extends MyTextField {
                 Gdx.input.getTextInput(textListener, placeholder, "", "Adj meg egy értéket");
             }
         });
+
     }
 
     @Override
@@ -39,6 +47,11 @@ public class MyInputField extends MyTextField {
 
     public void setDataValidity(boolean valid){
         this.setStyle(valid ? validStyle : invalidStyle);
+        this.valid = valid;
+    }
+
+    public boolean getValidity(){
+        return valid;
     }
 
     public float getValue() {
@@ -48,15 +61,65 @@ public class MyInputField extends MyTextField {
     Input.TextInputListener textListener = new Input.TextInputListener() {
         @Override
         public void input(String text) {
-            try{
-                value = Float.parseFloat(text.replace(',', '.'));
-                setDataValidity(true);
-                if(value %1 == 0) setText(placeholder + (int)(value));
-                else setText(placeholder+value);
-            }catch(Exception e){
-                e.printStackTrace();
-                setDataValidity(false);
+            switch (inputMode){
+                case FLOAT:
+                    try{
+                        value = Float.parseFloat(text.replace(',', '.'));
+                        setDataValidity(true);
+                        if(value %1 == 0) setText(placeholder + (int)(value));
+                        else setText(placeholder+value);
+                    }catch(Exception e){
+                        e.printStackTrace();
+                        setDataValidity(false);
+                    }
+                    break;
+                case DECIMAL:
+                    try{
+                        value = Integer.parseInt(text);
+                        setDataValidity(true);
+                        setText(placeholder+value);
+                    }catch(Exception e){
+                        e.printStackTrace();
+                        setDataValidity(false);
+                    }
+                    break;
+                case POSITIVE_DECIMAL_ONLY:
+                    try{
+                        value = Integer.parseInt(text);
+                        if(value >= 0) {
+                            setDataValidity(true);
+                            setText(placeholder + value);
+                        }else{
+                            setDataValidity(false);
+                        }
+                    }catch(Exception e){
+                        e.printStackTrace();
+                        setDataValidity(false);
+                    }
+                    break;
+                case POSITIVE_FlOAT_ONLY:
+                    try{
+                        value = Float.parseFloat(text.replace(',', '.'));
+                        if(value >= 0) {
+                            setDataValidity(true);
+                            if (value % 1 == 0) setText(placeholder + (int) (value));
+                            else setText(placeholder + value);
+                        }else setDataValidity(false);
+                    }catch(Exception e){
+                        e.printStackTrace();
+                        setDataValidity(false);
+                    }
+                    break;
+                case TEXT:
+                    try{
+                        setText(text);
+                        setDataValidity(true);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                        setDataValidity(false);
+                    }
             }
+
         }
 
         @Override

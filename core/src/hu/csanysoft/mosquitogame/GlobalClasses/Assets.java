@@ -41,8 +41,10 @@ public class Assets {
 
 	}
 
+
 	public static final AssetDescriptor<BitmapFont> ARIAL_30_FONT
 			= new AssetDescriptor<BitmapFont>(fontParameter.fontFileName, BitmapFont.class, fontParameter);
+
 
 	public static final AssetDescriptor<Texture> MAN_TEXTURE
 			= new AssetDescriptor<Texture>("pictures/man.gif", Texture.class);

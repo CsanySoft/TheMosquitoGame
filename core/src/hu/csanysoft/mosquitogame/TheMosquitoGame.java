@@ -58,6 +58,8 @@ public class TheMosquitoGame extends MyGame {
 		//style.background.setLeftWidth(style.background.getLeftWidth()+20);
 		//style.background.setRightWidth(style.background.getRightWidth()+20);
 		style.font = Assets.manager.get(Assets.ARIAL_30_FONT);
+		style.font.getData().setScale(1.2f);
+
 		style.fontColor = Color.BLACK;
 		return style;
 	}
@@ -67,6 +69,7 @@ public class TheMosquitoGame extends MyGame {
 		//style.background.setLeftWidth(style.background.getLeftWidth()+20);
 		//style.background.setRightWidth(style.background.getRightWidth()+20);
 		style.font = Assets.manager.get(Assets.ARIAL_30_FONT);
+		style.font.getData().setScale(1.2f);
 		style.fontColor = Color.RED;
 		return style;
 	}

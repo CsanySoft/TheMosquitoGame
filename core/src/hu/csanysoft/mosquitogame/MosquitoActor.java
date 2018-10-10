@@ -33,7 +33,7 @@ public class MosquitoActor extends OneSpriteAnimatedActor {
         this.differentSpeeds = differentSpeeds;
         setFps(24);
         if(!differentSpeeds) {
-            rightSpeed =speed;
+            rightSpeed = speed;
             leftSpeed = 0-speed;
         }
 

@@ -35,6 +35,7 @@ public class GameScreen extends MyScreen {
         super.resize(width, height);
 
         gameStage.resize(width, height);
+        gameStage.getViewport().update(width, height, true);
     }
 
     @Override

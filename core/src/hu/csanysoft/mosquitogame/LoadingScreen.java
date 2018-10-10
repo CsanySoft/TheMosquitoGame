@@ -1,12 +1,16 @@
 package hu.csanysoft.mosquitogame;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
 import hu.csanysoft.mosquitogame.GlobalClasses.Assets;
@@ -19,6 +23,7 @@ public class LoadingScreen extends MyScreen {
     BitmapFont bitmapFont = new BitmapFont();
     LoadingStage loadingStage;
     Image logo, loadingFrame, loadingBarHidden, screenBg, loadingBg;
+    InputMultiplexer inputMultiplexer;
 
     float startX, endX, percent;
 
@@ -35,7 +40,7 @@ public class LoadingScreen extends MyScreen {
         Assets.manager.load("pictures/loading.pack", TextureAtlas.class);
         Assets.manager.finishLoading();
 
-        loadingStage = new LoadingStage(spriteBatch, game);
+
 
         TextureAtlas atlas = Assets.manager.get("pictures/loading.pack", TextureAtlas.class);
 
@@ -57,9 +62,12 @@ public class LoadingScreen extends MyScreen {
         loadingStage.addActor(loadingFrame);
         loadingStage.addActor(logo);
 
+
+
         Assets.load();
     }
 
+    float worldWidth, worldHeight;
 
     @Override
     public void resize(int width, int height) {
@@ -68,15 +76,21 @@ public class LoadingScreen extends MyScreen {
         //height = 768;
         loadingStage.resize(width, height);
 
+        System.out.println(width+"x"+height);
+
+        worldWidth = loadingStage.getViewport().getWorldWidth();
+        worldHeight = loadingStage.getViewport().getWorldHeight();
+
         loadingStage.getViewport().update(width, height, true);
 
-        screenBg.setSize(width, height);
+        screenBg.setSize(worldWidth, worldHeight);
 
-        logo.setX((width - logo.getWidth()) / 2);
-        logo.setY((height - logo.getHeight()) / 2 + 100);
+        logo.setX((worldWidth - logo.getWidth()) / 2);
+        logo.setY((worldHeight- logo.getHeight()) / 2 + 100);
 
-        loadingBar.setX((width - loadingBar.getWidth()) / 4);
-        loadingBar.setY((height - loadingBar.getHeight()) / 4);
+        //loadingBar.setX((worldWidth - loadingBar.getWidth()) / 4);
+        loadingBar.setX(logo.getX() - (logo.getWidth()-loadingBar.getWidth())/8);
+        loadingBar.setY((worldHeight - loadingBar.getHeight()) / 4);
 
         loadingFrame.setPosition(loadingBar.getX()-15, loadingBar.getY()-5);
 
@@ -90,6 +104,7 @@ public class LoadingScreen extends MyScreen {
         loadingBg.setX(loadingBarHidden.getX() + 30);
         loadingBg.setY(loadingBarHidden.getY() + 3);
 
+        System.out.println("screenBg = " + screenBg.getWidth());
     }
 
     @Override
@@ -101,7 +116,7 @@ public class LoadingScreen extends MyScreen {
 
         if(Assets.manager.update()) {
             if(Gdx.input.isTouched()) {
-                game.setScreen(new MenuScreen(game));
+                //game.setScreen(new MenuScreen(game));
             }
         }
 
@@ -109,7 +124,7 @@ public class LoadingScreen extends MyScreen {
 
         loadingBarHidden.setX(startX + endX * percent);
         loadingBg.setX(loadingBarHidden.getX() + 30);
-        loadingBg.setWidth(450-450*percent);
+        loadingBg.setWidth(450-(450)*percent);
         loadingBg.invalidate();
 
 
@@ -118,8 +133,6 @@ public class LoadingScreen extends MyScreen {
         loadingStage.draw();
 
         spriteBatch.begin();
-
-
         if(Assets.manager.update()) {
             bitmapFont.draw(spriteBatch, "Betöltés kész, kattints a továbblépéshez!", loadingBar.getX()+loadingBar.getWidth()+loadingFrame.getWidth()/2-150, loadingBar.getY()+loadingFrame.getHeight()/2);
         } else bitmapFont.draw(spriteBatch, "Betöltés: " + Assets.manager.getLoadedAssets() + "/" + (Assets.manager.getQueuedAssets() + Assets.manager.getLoadedAssets()) + " (" + ((int) (Assets.manager.getProgress() * 100f)) + "%)", loadingBar.getX()+loadingBar.getWidth()+loadingFrame.getWidth()/2-75, loadingBar.getY()+loadingFrame.getHeight()/2);
@@ -137,5 +150,9 @@ public class LoadingScreen extends MyScreen {
     @Override
     public void init() {
         setBackGroundColor(0f, 0f, 0f);
+        loadingStage = new LoadingStage(spriteBatch, game);
+        inputMultiplexer = new InputMultiplexer();
+        inputMultiplexer.addProcessor(loadingStage);
+        Gdx.input.setInputProcessor(inputMultiplexer);
     }
 }

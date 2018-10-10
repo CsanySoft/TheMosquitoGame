@@ -1,9 +1,12 @@
 package hu.csanysoft.mosquitogame;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.MyStage;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
+import hu.csanysoft.mosquitogame.MyBaseClasses.UI.MyButton;
 import hu.csanysoft.mosquitogame.MyBaseClasses.UI.MyInputField;
 import hu.csanysoft.mosquitogame.MyBaseClasses.UI.MyTextField;
 import hu.csanysoft.mosquitogame.TheMosquitoGame;
@@ -12,6 +15,7 @@ public class InputStage extends MyStage{
 
 
     MyInputField szunyogseb, ember1seb, ember2seb, szunyogtav, embertav, szel;
+    MyButton startButton;
 
     public InputStage(Batch batch, TheMosquitoGame game) {
         super(new ExtendViewport(1024f,768f), batch, game);
@@ -30,13 +34,31 @@ public class InputStage extends MyStage{
         embertav.setPosition(500, 500);
         szel = new MyInputField("Szél: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.FLOAT);
         szel.setPosition(500, 300);
+        startButton = new MyButton("", game.btnStart());
+        startButton.setPosition(getWidth()/2-startButton.getWidth()/2, 200);
+        startButton.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                kalkulacio();
+            }
+        });
         addActor(szunyogseb);
         addActor(ember1seb);
         addActor(ember2seb);
         addActor(szunyogtav);
         addActor(embertav);
         addActor(szel);
+        addActor(startButton);
 
+    }
+
+    void kalkulacio(){
+        if(szunyogseb.isValid() && ember1seb.isValid() && ember2seb.isValid() && szunyogtav.isValid() && embertav.isValid() && szel.isValid()){
+            System.out.println("succ");
+        }else{
+            System.out.println("no succ");
+        }
     }
 
 

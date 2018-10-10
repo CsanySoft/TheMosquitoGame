@@ -50,7 +50,7 @@ public class MyInputField extends MyTextField {
         this.valid = valid;
     }
 
-    public boolean getValidity(){
+    public boolean isValid(){
         return valid;
     }
 

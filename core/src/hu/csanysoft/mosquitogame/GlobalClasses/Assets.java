@@ -77,6 +77,12 @@ public class Assets {
 	public static final AssetDescriptor<Music>  MSUSIC_AMENO
 			= new AssetDescriptor<Music>("sounds/Ameno.mp3", Music.class);
 
+	public static final AssetDescriptor<Music>  MUSIC_MOSQUITOSFX
+			= new AssetDescriptor<Music>("sounds/mosquitoSFX.mp3", Music.class);
+
+	public static final AssetDescriptor<Music>  MUSIC_CLICK
+			= new AssetDescriptor<Music>("sounds/buttonClick.mp3", Music.class);
+
 
     public static void prepare() {
 		manager = new AssetManager();
@@ -106,11 +112,15 @@ public class Assets {
 
 		manager.load(BTN_EXIT_DOWN_TEXTURE);
 
-		manager.load(MUSIC_MENU);
-
 		manager.load(MOSQUITO_TEXTUREATLAS);
 
 		manager.load(BACKGROUND_TEXTURE);
+
+		manager.load(MUSIC_MENU);
+
+		manager.load(MUSIC_CLICK);
+
+		manager.load(MUSIC_MOSQUITOSFX);
 	}
 
     public static void afterLoaded() {

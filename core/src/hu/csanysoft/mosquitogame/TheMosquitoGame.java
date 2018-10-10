@@ -17,6 +17,9 @@ import hu.csanysoft.mosquitogame.MyBaseClasses.Game.MyGame;
 
 public class TheMosquitoGame extends MyGame {
 
+	public static final int SCREEN_WIDTH = 1280;
+	public static final int SCREEN_HEIGHT = 720;
+
 
 	public TextButton.TextButtonStyle btnStart() {
 

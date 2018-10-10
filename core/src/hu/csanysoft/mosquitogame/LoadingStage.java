@@ -8,7 +8,7 @@ import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.MyStage;
 
 public class LoadingStage extends MyStage {
     public LoadingStage(Batch batch, TheMosquitoGame game) {
-        super(new ExtendViewport(1024f,768f), batch, game);
+        super(new ExtendViewport(game.SCREEN_WIDTH,game.SCREEN_HEIGHT), batch, game);
         System.out.println("Kész");
         fitWorldToWidth();
     }

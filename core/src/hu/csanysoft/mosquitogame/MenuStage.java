@@ -21,7 +21,7 @@ public class MenuStage extends MyStage {
     final TheMosquitoGame gameFinal;
 
     public MenuStage(Batch batch, TheMosquitoGame game) {
-        super(new ExtendViewport(1024f, 768f), batch, game);
+        super(new ExtendViewport(game.SCREEN_WIDTH, game.SCREEN_HEIGHT), batch, game);
         this.gameFinal = game;
 
         hatterzene.setVolume(2.5f);

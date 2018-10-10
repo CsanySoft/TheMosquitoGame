@@ -18,24 +18,24 @@ public class InputStage extends MyStage{
     MyButton startButton;
 
     public InputStage(Batch batch, TheMosquitoGame game) {
-        super(new ExtendViewport(1024f,768f), batch, game);
+        super(new ExtendViewport(game.SCREEN_WIDTH,game.SCREEN_HEIGHT), batch, game);
     }//todo: megcsinálni az adatok bekérését, és hibás adatok visszadobása
     @Override
     public void init() {
         szunyogseb = new MyInputField("Szúnyog sebesség: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
-        szunyogseb.setPosition(10, 700);
+        szunyogseb.setPosition(10, 600);
         ember1seb = new MyInputField("Ember 1 sebesség: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
-        ember1seb.setPosition(10, 500);
+        ember1seb.setPosition(10, 400);
         ember2seb = new MyInputField("Ember 2 sebesség: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
-        ember2seb.setPosition(10, 300);
+        ember2seb.setPosition(10, 200);
         szunyogtav = new MyInputField("Szúnyog távolság: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
-        szunyogtav.setPosition(500, 700);
+        szunyogtav.setPosition(600, 600);
         embertav = new MyInputField("Emberek közti táv: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
-        embertav.setPosition(500, 500);
+        embertav.setPosition(600, 400);
         szel = new MyInputField("Szél: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.FLOAT);
-        szel.setPosition(500, 300);
+        szel.setPosition(600, 200);
         startButton = new MyButton("", game.btnStart());
-        startButton.setPosition(getWidth()/2-startButton.getWidth()/2, 200);
+        startButton.setPosition(getWidth()/2-startButton.getWidth()/2, 50);
         startButton.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {

@@ -27,17 +27,17 @@ public class InputStage extends MyStage{
     }//todo: megcsinálni az adatok bekérését, és hibás adatok visszadobása
     @Override
     public void init() {
-        szunyogseb = new MyInputField("Szúnyog sebesség: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
+        szunyogseb = new MyInputField("Szúnyog sebesség: ", "m/s",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
         szunyogseb.setPosition(10, 600);
-        ember1seb = new MyInputField("Ember 1 sebesség: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
+        ember1seb = new MyInputField("Ember 1 sebesség: ", "m/s",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
         ember1seb.setPosition(10, 400);
-        ember2seb = new MyInputField("Ember 2 sebesség: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
+        ember2seb = new MyInputField("Ember 2 sebesség: ", "m/s",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
         ember2seb.setPosition(10, 200);
-        szunyogtav = new MyInputField("Szúnyog távolság: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
+        szunyogtav = new MyInputField("Szúnyog távolság: ","m",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
         szunyogtav.setPosition(600, 600);
-        embertav = new MyInputField("Emberek közti táv: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
+        embertav = new MyInputField("Emberek közti táv: ","m",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
         embertav.setPosition(600, 400);
-        szel = new MyInputField("Szél: ",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.FLOAT);
+        szel = new MyInputField("Szél: ","m/s",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.FLOAT);
         szel.setPosition(600, 200);
         startButton = new MyButton("", game.btnStart());
         startButton.setPosition(getWidth()/2-startButton.getWidth()/2, 50);

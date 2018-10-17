@@ -14,18 +14,19 @@ public class MyInputField extends MyTextField {
 
 
     TextFieldStyle validStyle, invalidStyle;
-    String placeholder;
+    String placeholder, unit;
     private float value = 0;
     InputMode inputMode;
     private boolean valid = true;
 
 
-    public MyInputField(final String placeholder, TextFieldStyle validStyle, TextFieldStyle invalidStyle, InputMode inputMode) {
-        super(placeholder+0, validStyle);
+    public MyInputField(final String placeholder, String unit, TextFieldStyle validStyle, TextFieldStyle invalidStyle, InputMode inputMode) {
+        super(placeholder+0+" "+unit, validStyle);
         this.validStyle = validStyle;
         this.invalidStyle = invalidStyle;
         this.placeholder = placeholder;
         this.inputMode = inputMode;
+        this.unit = unit;
         setWidth(500);
         setDisabled(true);
         //setTextFieldFilter(new TheMosquitoGame.FloatNumberFilter());
@@ -67,8 +68,8 @@ public class MyInputField extends MyTextField {
                     try{
                         value = Float.parseFloat(text.replace(',', '.'));
                         setDataValidity(true);
-                        if(value %1 == 0) setText(placeholder + (int)(value));
-                        else setText(placeholder+value);
+                        if(value %1 == 0) setText(placeholder + (int)(value)+" "+unit);
+                        else setText(placeholder+value+" "+unit);
                     }catch(Exception e){
                         e.printStackTrace();
                         setDataValidity(false);
@@ -78,7 +79,7 @@ public class MyInputField extends MyTextField {
                     try{
                         value = Integer.parseInt(text);
                         setDataValidity(true);
-                        setText(placeholder+value);
+                        setText(placeholder+value+" "+unit);
                     }catch(Exception e){
                         e.printStackTrace();
                         setDataValidity(false);
@@ -89,7 +90,7 @@ public class MyInputField extends MyTextField {
                         value = Integer.parseInt(text);
                         if(value >= 0) {
                             setDataValidity(true);
-                            setText(placeholder + value);
+                            setText(placeholder + value+" "+unit);
                         }else{
                             setDataValidity(false);
                         }
@@ -103,8 +104,8 @@ public class MyInputField extends MyTextField {
                         value = Float.parseFloat(text.replace(',', '.'));
                         if(value >= 0) {
                             setDataValidity(true);
-                            if (value % 1 == 0) setText(placeholder + (int) (value));
-                            else setText(placeholder + value);
+                            if (value % 1 == 0) setText(placeholder + (int) (value)+" "+unit);
+                            else setText(placeholder + value+" "+unit);
                         }else setDataValidity(false);
                     }catch(Exception e){
                         e.printStackTrace();

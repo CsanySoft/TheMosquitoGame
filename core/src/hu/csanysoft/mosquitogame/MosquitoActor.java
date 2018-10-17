@@ -29,7 +29,7 @@ public class MosquitoActor extends OneSpriteAnimatedActor {
         super(Assets.manager.get(Assets.MOSQUITO_TEXTUREATLAS));
         this.pos = pos;
         this.speed = speed;
-        setPosition(pos, 100);
+        setPosition(pos, 180);
         setSize(width, width);
         travelledLength=0;
         this.differentSpeeds = differentSpeeds;

@@ -116,20 +116,27 @@ public class GameStage extends MyStage {
         //System.out.println("Travellable: " + travellableDistance);
 
 
-        if(length<=mosquitoWidth) {
-            manActor1.setSpeed(0);
-            manActor2.setSpeed(0);
+        if(length<=mosquitoWidth && length > 0) {
+            manActor1.setSpeed(0.06f);
+            manActor2.setSpeed(-0.06f);
+            mosquitoActor.setX(manActor1.getX()+manActor1.getWidth());
             mosquitoActor.setSpeed(0);
             mosquitoActor.setRightSpeed(0);
             mosquitoActor.setLeftSpeed(0);
+            if(mosquitoActor.getWidth()>=-1)mosquitoActor.setWidth(mosquitoActor.getWidth()-0.12f);
+            end = true;
+            if(travelLength-mosquitoActor.travelledLength <= 5 && travelLength-mosquitoActor.travelledLength >= -5) mosquitoActor.travelledLength = travelLength;
+        }
+
+        if(length<0.5f) {
+            manActor1.setSpeed(0);
+            manActor2.setSpeed(0);
+            getActors().removeValue(mosquitoActor,true);
             if(egyszerRobban) {
                 addActor(explosionActor = new ExplosionActor());
                 explosionActor.setPosition(mosquitoActor.getX()-explosionActor.getWidth()/2 + mosquitoWidth/2, mosquitoActor.getY()-explosionActor.getHeight()/2 + mosquitoWidth/2);
                 egyszerRobban = false;
             }
-
-            end = true;
-            if(travelLength-mosquitoActor.travelledLength <= 5 && travelLength-mosquitoActor.travelledLength >= -5) mosquitoActor.travelledLength = travelLength;
         }
     }
 

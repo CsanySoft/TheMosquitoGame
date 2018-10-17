@@ -24,7 +24,7 @@ public class InputStage extends MyStage{
 
     public InputStage(Batch batch, TheMosquitoGame game) {
         super(new ExtendViewport(game.SCREEN_WIDTH,game.SCREEN_HEIGHT), batch, game);
-    }//todo: megcsinálni az adatok bekérését, és hibás adatok visszadobása
+    }
     @Override
     public void init() {
         szunyogseb = new MyInputField("Szúnyog sebesség: ", "m/s",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);

@@ -27,6 +27,7 @@ public class MyInputField extends MyTextField {
         this.placeholder = placeholder;
         this.inputMode = inputMode;
         setWidth(500);
+        setDisabled(true);
         //setTextFieldFilter(new TheMosquitoGame.FloatNumberFilter());
         addListener(new ClickListener(){
             @Override

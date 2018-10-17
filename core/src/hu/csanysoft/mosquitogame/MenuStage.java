@@ -29,7 +29,7 @@ public class MenuStage extends MyStage {
         hatterzene.setLooping(true);
         hatterzene.play();
 
-        btnStart = new MyButton("", game.btnStart());
+ /*       btnStart = new MyButton("", game.btnStart());
         btnStart.addListener(new ClickListener() {
 
             @Override
@@ -46,7 +46,7 @@ public class MenuStage extends MyStage {
         });
         addActor(btnStart);
         btnStart.setPosition(getViewport().getWorldWidth() / 2 - btnStart.getWidth() / 2, getViewport().getWorldHeight() / 2 + btnStart.getHeight());
-
+*/
         btnExit = new MyButton("", game.btnExit());
         btnExit.addListener(new ClickListener() {
 

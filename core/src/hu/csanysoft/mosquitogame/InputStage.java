@@ -6,6 +6,9 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.MyStage;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import hu.csanysoft.mosquitogame.MyBaseClasses.UI.MyButton;
 import hu.csanysoft.mosquitogame.MyBaseClasses.UI.MyInputField;
 import hu.csanysoft.mosquitogame.MyBaseClasses.UI.MyTextField;
@@ -16,6 +19,8 @@ public class InputStage extends MyStage{
 
     MyInputField szunyogseb, ember1seb, ember2seb, szunyogtav, embertav, szel;
     MyButton startButton;
+    public static int SZUNYOG_SEB = 0, EMBER1_SEB = 1, EMBER2_SEB = 2, SZUNYOG_TAV = 3, EMBER_TAV = 4, SZEL = 5;
+    static ArrayList<Float> adatok;
 
     public InputStage(Batch batch, TheMosquitoGame game) {
         super(new ExtendViewport(game.SCREEN_WIDTH,game.SCREEN_HEIGHT), batch, game);
@@ -51,11 +56,25 @@ public class InputStage extends MyStage{
         addActor(szel);
         addActor(startButton);
 
+        adatok = new ArrayList<>();
+
+    }
+
+    @org.jetbrains.annotations.Contract(pure = true)
+    public static float getValue(int i) {
+        return adatok.get(i);
     }
 
     void kalkulacio(){
         if(szunyogseb.isValid() && ember1seb.isValid() && ember2seb.isValid() && szunyogtav.isValid() && embertav.isValid() && szel.isValid()){
             System.out.println("succ");
+            adatok.add(szunyogseb.getValue());
+            adatok.add(ember1seb.getValue());
+            adatok.add(ember2seb.getValue());
+            adatok.add(szunyogtav.getValue());
+            adatok.add(embertav.getValue());
+            adatok.add(szel.getValue());
+            game.setScreen(new GameScreen(game));
         }else{
             System.out.println("no succ");
         }

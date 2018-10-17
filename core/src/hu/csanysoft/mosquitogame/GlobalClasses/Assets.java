@@ -86,6 +86,9 @@ public class Assets {
 			= new AssetDescriptor<Music>("sounds/buttonClick.mp3", Music.class);
 
 
+	public static final AssetDescriptor<TextureAtlas> EXPLOSION_TEXTURE
+			= new AssetDescriptor<TextureAtlas>("animacio/explosion.atlas", TextureAtlas.class);
+
     public static void prepare() {
 		manager = new AssetManager();
 		Texture.setAssetManager(manager);
@@ -123,6 +126,8 @@ public class Assets {
 		manager.load(MUSIC_CLICK);
 
 		manager.load(MUSIC_MOSQUITOSFX);
+
+		manager.load(EXPLOSION_TEXTURE);
 	}
 
     public static void afterLoaded() {

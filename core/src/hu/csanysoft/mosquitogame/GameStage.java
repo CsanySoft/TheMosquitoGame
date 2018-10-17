@@ -12,6 +12,7 @@ import hu.csanysoft.mosquitogame.GlobalClasses.Assets;
 import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.MyStage;
 import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.ShapeType;
+import hu.csanysoft.mosquitogame.InputStage;
 
 public class GameStage extends MyStage {
 
@@ -19,8 +20,9 @@ public class GameStage extends MyStage {
     Calcuations c;
     ManActor manActor1, manActor2;
     MosquitoActor mosquitoActor;
-    boolean canGo, end, once;
+    boolean canGo, end, once, egyszerRobban;
     Image bg;
+    ExplosionActor explosionActor;
 
 
     public GameStage(Batch batch, TheMosquitoGame game) {
@@ -32,14 +34,21 @@ public class GameStage extends MyStage {
         c = new Calcuations();
 
         posA=100;
-        length = 500;
+        length = InputStage.getValue(InputStage.EMBER_TAV);
         mosquitoWidth= 20;
-        speedManA= .2f;
-        speedManB= .4f;
-        speedMosquito= 6f;
+        speedManA= InputStage.getValue(InputStage.EMBER1_SEB);
+        speedManB= InputStage.getValue(InputStage.EMBER2_SEB);
+        speedMosquito= InputStage.getValue(InputStage.SZUNYOG_SEB);
         posB=posA+length;
-        travelLength=2000;
-        wind = 3f; //Pozitív=jobbra fúj a szél, negatív = balra fúj a szél. Nem lehet nagyobb vagy egyenlő, mint a szúnyog sebességének fele
+        travelLength=InputStage.getValue(InputStage.SZUNYOG_TAV);
+
+        System.out.println("length = " + length);
+        System.out.println("speedManA = " + speedManA);
+        System.out.println("speedManB = " + speedManB);
+        System.out.println("speedMosquito = " + speedMosquito);
+        System.out.println("travelLength = " + travelLength);
+
+        //wind = InputStage.getValue(InputStage.SZEL); //Pozitív=jobbra fúj a szél, negatív = balra fúj a szél. Nem lehet nagyobb vagy egyenlő, mint a szúnyog sebességének fele
 
         speedMan = 0; //Nincs használva ha különböző a két ember sebessége
 
@@ -48,11 +57,11 @@ public class GameStage extends MyStage {
         manActor2 = new ManActor(Assets.manager.get(Assets.MAN_TEXTURE), posB+manActor1.getWidth(), 0-speedManB);
         manActor2.setId((short)1);
         manActor2.setFlip(true, false);
-        mosquitoActor = new MosquitoActor(posA,speedMosquito, mosquitoWidth, true);
-        mosquitoActor.setRightSpeed(speedMosquito+wind);
-        mosquitoActor.setLeftSpeed(0-speedMosquito+wind);
+        mosquitoActor = new MosquitoActor(posA,speedMosquito, mosquitoWidth, false);
+        //mosquitoActor.setRightSpeed(speedMosquito+wind);
+        //mosquitoActor.setLeftSpeed(0-speedMosquito+wind);
 
-        canGo=false;  end = false;
+        canGo=false;  end = false; egyszerRobban=true;
         if(!canGo)mosquitoActor.setSpeed(0);
 
         addActor(manActor1);
@@ -71,7 +80,7 @@ public class GameStage extends MyStage {
 
 
         mosquitoActor.setSpeed(speedMosquito);
-        speedMosquito = (mosquitoActor.getRightSpeed() + mosquitoActor.getLeftSpeed()/(wind - ((((wind) * (10*speedManB)) * speedMosquito - 1)/100)));
+        //speedMosquito = (mosquitoActor.getRightSpeed() + mosquitoActor.getLeftSpeed()/(wind - ((((wind) * (10*speedManB)) * speedMosquito - 1)/100)));
         lengthToStart = c.getLenghtToStart(mosquitoWidth,speedManA, speedManB,speedMosquito,travelLength);
         fitWorldToWidth();//Különböző méretű képernyők miatt
     }
@@ -113,6 +122,12 @@ public class GameStage extends MyStage {
             mosquitoActor.setSpeed(0);
             mosquitoActor.setRightSpeed(0);
             mosquitoActor.setLeftSpeed(0);
+            if(egyszerRobban) {
+                addActor(explosionActor = new ExplosionActor());
+                explosionActor.setPosition(mosquitoActor.getX()-explosionActor.getWidth()/2 + mosquitoWidth/2, mosquitoActor.getY()-explosionActor.getHeight()/2 + mosquitoWidth/2);
+                egyszerRobban = false;
+            }
+
             end = true;
             if(travelLength-mosquitoActor.travelledLength <= 5 && travelLength-mosquitoActor.travelledLength >= -5) mosquitoActor.travelledLength = travelLength;
         }

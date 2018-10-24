@@ -85,21 +85,20 @@ public class Assets {
 	public static final AssetDescriptor<Music>  MUSIC_CLICK
 			= new AssetDescriptor<Music>("sounds/buttonClick.mp3", Music.class);
 
-
+	//ATLASOK
 	public static final AssetDescriptor<TextureAtlas> EXPLOSION_TEXTURE
 			= new AssetDescriptor<TextureAtlas>("animacio/explosion.atlas", TextureAtlas.class);
 
-	//ATLASOK
 	public static final AssetDescriptor<TextureAtlas> MOSQUITO_TEXTUREATLAS
 			= new AssetDescriptor<TextureAtlas>("pictures/Moszkito/szunyog.atlas", TextureAtlas.class);
 
 
 	public static final AssetDescriptor<TextureAtlas> WALK_TEXTUREATLAS
-			= new AssetDescriptor<TextureAtlas>("pictures/Moszkito/walk.atlas", TextureAtlas.class);
+			= new AssetDescriptor<TextureAtlas>("animacio/walk.atlas", TextureAtlas.class);
 
 
 	public static final AssetDescriptor<TextureAtlas> PUNCH_TEXTUREATLAS
-			= new AssetDescriptor<TextureAtlas>("pictures/Moszkito/punch.atlas", TextureAtlas.class);
+			= new AssetDescriptor<TextureAtlas>("animacio/punch.atlas", TextureAtlas.class);
 
     public static void prepare() {
 		manager = new AssetManager();

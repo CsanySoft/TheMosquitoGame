@@ -2,9 +2,11 @@ package hu.csanysoft.mosquitogame;
 
 import com.badlogic.gdx.graphics.Texture;
 
+import hu.csanysoft.mosquitogame.GlobalClasses.Assets;
+import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.OneSpriteAnimatedActor;
 import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 
-public class ManActor extends OneSpriteStaticActor {
+public class ManActor extends OneSpriteAnimatedActor {
     float pos, speed;
     short id;
 
@@ -16,7 +18,7 @@ public class ManActor extends OneSpriteStaticActor {
      */
 
     public ManActor(Texture texture, float pos, float speed) {
-        super(texture);
+        super(Assets.manager.get(Assets.WALK_TEXTUREATLAS));
         this.pos = pos;
         this.speed = speed;
         setPosition(pos, 100);

@@ -1,9 +1,12 @@
 package hu.csanysoft.mosquitogame;
 
 import com.badlogic.gdx.assets.AssetDescriptor;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -23,6 +26,7 @@ public class GameStage extends MyStage {
     boolean canGo, end, once, egyszerRobban;
     Image bg;
     ExplosionActor explosionActor;
+    Label lblTavolsag, lblMegtettTav;
 
 
     public GameStage(Batch batch, TheMosquitoGame game) {
@@ -30,6 +34,8 @@ public class GameStage extends MyStage {
 
         bg = new Image(Assets.manager.get(Assets.BACKGROUND_TEXTURE));
         addActor(bg);
+        addActor(lblMegtettTav);
+        addActor(lblTavolsag);
 
         c = new Calcuations();
 
@@ -83,11 +89,26 @@ public class GameStage extends MyStage {
         //speedMosquito = (mosquitoActor.getRightSpeed() + mosquitoActor.getLeftSpeed()/(wind - ((((wind) * (10*speedManB)) * speedMosquito - 1)/100)));
         lengthToStart = c.getLenghtToStart(mosquitoWidth,speedManA, speedManB,speedMosquito,travelLength);
         fitWorldToWidth();//Különböző méretű képernyők miatt
+        setDebugAll(false);
     }
 
     @Override
     public void init() {
+        lblMegtettTav = new Label("Emberek közötti táv: ", getLabelStyle());
+        lblTavolsag = new Label("Szúnyog által megtett táv: ", getLabelStyle());
+        lblTavolsag.setSize(200, 20);
+        lblMegtettTav.setSize(200, 20);
+        lblTavolsag.setTouchable(Touchable.disabled);
+        lblMegtettTav.setTouchable(Touchable.disabled);
+    }
 
+
+    public Label.LabelStyle getLabelStyle() {
+        Label.LabelStyle style;
+        style = new com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle();
+        style.font = Assets.manager.get(Assets.ARIAL_30_FONT);
+        style.fontColor = Color.WHITE;
+        return style;
     }
 
     @Override
@@ -95,6 +116,10 @@ public class GameStage extends MyStage {
         super.act(delta);
 
         //float travellableDistance = (((length/((speedMan*2)/(speedMan*10)))*speedMosquito-mosquitoWidth*(speedMosquito*5)) - 10*speedMan)/(10*speedMan)-speedMosquito;
+
+
+        lblMegtettTav.setText("Szúnyog által megtett táv: "+(int)mosquitoActor.travelledLength);
+        lblTavolsag.setText("Emberek közötti táv: "+(int)Math.floor(manActor2.getX() - (manActor1.getX()+manActor1.getWidth())));
 
 
         if(!canGo) {
@@ -144,6 +169,10 @@ public class GameStage extends MyStage {
     public void resize(int screenWidth, int screenHeight) {
         super.resize(screenWidth, screenHeight);
 
+        lblTavolsag.setPosition(10, getViewport().getWorldHeight() - lblTavolsag.getHeight()-10);
+        lblMegtettTav.setPosition(10, getViewport().getWorldHeight() - (lblTavolsag.getHeight()-10)*8);
+        lblTavolsag.setSize(200, 20);
+        lblMegtettTav.setSize(200, 20);
         bg.setWidth(getViewport().getWorldWidth());
         bg.setHeight(getViewport().getWorldHeight());
         System.out.println("getViewport().getScreenX() = " + getViewport().getScreenX());

@@ -46,6 +46,9 @@ public class Assets {
 			= new AssetDescriptor<BitmapFont>(fontParameter.fontFileName, BitmapFont.class, fontParameter);
 
 
+	public static final AssetDescriptor<Texture> HELPHAND_TEXTURE
+			= new AssetDescriptor<Texture>("pictures/help_hand.png", Texture.class);
+
 	public static final AssetDescriptor<Texture> MAN_TEXTURE
 			= new AssetDescriptor<Texture>("pictures/man.gif", Texture.class);
 
@@ -103,6 +106,8 @@ public class Assets {
 
 		manager.load(MAN666_TEXTURE);
 		manager.load(MSUSIC_AMENO);
+
+		manager.load(HELPHAND_TEXTURE);
 
 		manager.load(MAN_TEXTURE);
 		manager.load(MOSQUITO_TEXTURE);

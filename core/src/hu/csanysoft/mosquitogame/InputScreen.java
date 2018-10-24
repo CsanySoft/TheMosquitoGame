@@ -37,8 +37,7 @@ public class InputScreen extends MyScreen {
     @Override
     public void render(float delta) {
         super.render(delta);
-
-        if(inputStage.getElapsedTime()>1)
+        //if(inputStage.getElapsedTime()>1)
             //game.setScreen(new GameScreen(game));//Todo: Dummy, magyarán ez azért van, hogyha le van futtatva, akkor ne álljon meg és ne csináljon semmit
         inputStage.act(delta);
         inputStage.draw();

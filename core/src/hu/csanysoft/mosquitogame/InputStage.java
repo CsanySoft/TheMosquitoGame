@@ -21,6 +21,7 @@ public class InputStage extends MyStage{
     MyButton startButton;
     public static int SZUNYOG_SEB = 0, EMBER1_SEB = 1, EMBER2_SEB = 2, SZUNYOG_TAV = 3, EMBER_TAV = 4, SZEL = 5;
     static ArrayList<Float> adatok;
+    HelpHandActor helpHandActor;
 
     public InputStage(Batch batch, TheMosquitoGame game) {
         super(new ExtendViewport(game.SCREEN_WIDTH,game.SCREEN_HEIGHT), batch, game);
@@ -56,6 +57,9 @@ public class InputStage extends MyStage{
         addActor(szel);
         addActor(startButton);
 
+        helpHandActor = new HelpHandActor(szunyogseb.getX()+szunyogseb.getWidth()/2 , szunyogseb.getY()-180);
+        addActor(helpHandActor);
+
         adatok = new ArrayList<>();
 
     }
@@ -80,5 +84,11 @@ public class InputStage extends MyStage{
         }
     }
 
-
+    @Override
+    public void act(float delta) {
+        super.act(delta);
+        if(szunyogseb.isValid() && szunyogseb.getValue() > 0) {
+            getActors().removeValue(helpHandActor, true);
+        }
+    }
 }

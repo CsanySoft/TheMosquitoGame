@@ -61,9 +61,6 @@ public class Assets {
 	public static final AssetDescriptor<Texture> BACKGROUND_TEXTURE
 			= new AssetDescriptor<Texture>("pictures/background.png", Texture.class);
 
-	public static final AssetDescriptor<TextureAtlas> MOSQUITO_TEXTUREATLAS
-			= new AssetDescriptor<TextureAtlas>("pictures/Moszkito/szunyog.atlas", TextureAtlas.class);
-
 	public static final AssetDescriptor<Texture> BTN_START_DOWN_TEXTURE
 			= new AssetDescriptor<Texture>("pictures/start_down.png", Texture.class);
 
@@ -91,6 +88,18 @@ public class Assets {
 
 	public static final AssetDescriptor<TextureAtlas> EXPLOSION_TEXTURE
 			= new AssetDescriptor<TextureAtlas>("animacio/explosion.atlas", TextureAtlas.class);
+
+	//ATLASOK
+	public static final AssetDescriptor<TextureAtlas> MOSQUITO_TEXTUREATLAS
+			= new AssetDescriptor<TextureAtlas>("pictures/Moszkito/szunyog.atlas", TextureAtlas.class);
+
+
+	public static final AssetDescriptor<TextureAtlas> WALK_TEXTUREATLAS
+			= new AssetDescriptor<TextureAtlas>("pictures/Moszkito/walk.atlas", TextureAtlas.class);
+
+
+	public static final AssetDescriptor<TextureAtlas> PUNCH_TEXTUREATLAS
+			= new AssetDescriptor<TextureAtlas>("pictures/Moszkito/punch.atlas", TextureAtlas.class);
 
     public static void prepare() {
 		manager = new AssetManager();
@@ -132,7 +141,13 @@ public class Assets {
 
 		manager.load(MUSIC_MOSQUITOSFX);
 
+
+		//ATLASOK
 		manager.load(EXPLOSION_TEXTURE);
+
+		manager.load(WALK_TEXTUREATLAS);
+
+		manager.load(PUNCH_TEXTUREATLAS);
 	}
 
     public static void afterLoaded() {

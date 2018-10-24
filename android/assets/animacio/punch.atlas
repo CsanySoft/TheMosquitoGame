@@ -1,0 +1,88 @@
+punch.png
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+0
+   rotate: false
+   xy: 0, 0
+   size: 262, 546
+   orig: 0, 0
+   offset: 0, 0
+   index: -1
+1
+   rotate: false
+   xy: 262, 0
+   size: 262, 546
+   orig: 0, 0
+   offset: 0, 0
+   index: -1
+2
+   rotate: false
+   xy: 524, 0
+   size: 262, 546
+   orig: 0, 0
+   offset: 0, 0
+   index: -1
+3
+   rotate: false
+   xy: 786, 0
+   size: 262, 546
+   orig: 0, 0
+   offset: 0, 0
+   index: -1
+4
+   rotate: false
+   xy: 0, 546
+   size: 262, 546
+   orig: 0, 0
+   offset: 0, 0
+   index: -1
+5
+   rotate: false
+   xy: 262, 546
+   size: 262, 546
+   orig: 0, 0
+   offset: 0, 0
+   index: -1
+6
+   rotate: false
+   xy: 524, 546
+   size: 262, 546
+   orig: 0, 0
+   offset: 0, 0
+   index: -1
+7
+   rotate: false
+   xy: 786, 546
+   size: 262, 546
+   orig: 0, 0
+   offset: 0, 0
+   index: -1
+8
+   rotate: false
+   xy: 0, 1092
+   size: 262, 546
+   orig: 0, 0
+   offset: 0, 0
+   index: -1
+9
+   rotate: false
+   xy: 262, 1092
+   size: 262, 546
+   orig: 0, 0
+   offset: 0, 0
+   index: -1
+10
+   rotate: false
+   xy: 524, 1092
+   size: 262, 546
+   orig: 0, 0
+   offset: 0, 0
+   index: -1
+11
+   rotate: false
+   xy: 786, 1092
+   size: 262, 546
+   orig: 0, 0
+   offset: 0, 0
+   index: -1

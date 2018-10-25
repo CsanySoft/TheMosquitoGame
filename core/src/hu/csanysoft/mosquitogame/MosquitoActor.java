@@ -76,11 +76,13 @@ public class MosquitoActor extends OneSpriteAnimatedActor {
                 if(((ManActor) actor).getId()==0) {
                     if(((ManActor) actor).overlaps(ShapeType.Rectangle, this)) {
                         setSpeed(rightSpeed);
+                        flip(true);
                     }
                 } else if (((ManActor) actor).getId()==1) {
 
                     if(((ManActor) actor).overlaps(ShapeType.Rectangle, this)) {
                         setSpeed(leftSpeed);
+                        flip(false);
                     }
                 }
             }

@@ -1,0 +1,60 @@
+seta.png
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+0
+   rotate: false
+   xy: 0, 0
+   size: 296, 599
+   orig: 0, 0
+   offset: 0, 0
+   index: -1
+1
+   rotate: false
+   xy: 296, 0
+   size: 296, 599
+   orig: 0, 0
+   offset: 0, 0
+   index: -1
+2
+   rotate: false
+   xy: 592, 0
+   size: 296, 599
+   orig: 0, 0
+   offset: 0, 0
+   index: -1
+3
+   rotate: false
+   xy: 888, 0
+   size: 296, 599
+   orig: 0, 0
+   offset: 0, 0
+   index: -1
+4
+   rotate: false
+   xy: 1184, 0
+   size: 296, 599
+   orig: 0, 0
+   offset: 0, 0
+   index: -1
+5
+   rotate: false
+   xy: 1480, 0
+   size: 296, 599
+   orig: 0, 0
+   offset: 0, 0
+   index: -1
+6
+   rotate: false
+   xy: 1776, 0
+   size: 296, 599
+   orig: 0, 0
+   offset: 0, 0
+   index: -1
+7
+   rotate: false
+   xy: 2072, 0
+   size: 296, 599
+   orig: 0, 0
+   offset: 0, 0
+   index: -1

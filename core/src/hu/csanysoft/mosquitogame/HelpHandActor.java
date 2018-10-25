@@ -1,7 +1,5 @@
 package hu.csanysoft.mosquitogame;
 
-import com.badlogic.gdx.graphics.Texture;
-
 import hu.csanysoft.mosquitogame.GlobalClasses.Assets;
 import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 

@@ -96,6 +96,9 @@ public class Assets {
 	public static final AssetDescriptor<TextureAtlas> WALK_TEXTUREATLAS
 			= new AssetDescriptor<TextureAtlas>("animacio/walk.atlas", TextureAtlas.class);
 
+	public static final AssetDescriptor<TextureAtlas> WALK2_TEXTUREATLAS
+			= new AssetDescriptor<TextureAtlas>("animacio/walk_2.atlas", TextureAtlas.class);
+
 
 	public static final AssetDescriptor<TextureAtlas> PUNCH_TEXTUREATLAS
 			= new AssetDescriptor<TextureAtlas>("animacio/punch.atlas", TextureAtlas.class);
@@ -147,6 +150,8 @@ public class Assets {
 		manager.load(WALK_TEXTUREATLAS);
 
 		manager.load(PUNCH_TEXTUREATLAS);
+
+		manager.load(WALK2_TEXTUREATLAS);
 	}
 
     public static void afterLoaded() {

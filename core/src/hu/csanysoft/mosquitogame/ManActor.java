@@ -18,7 +18,8 @@ public class ManActor extends OneSpriteAnimatedActor {
      */
 
     public ManActor(Texture texture, float pos, float speed) {
-        super(Assets.manager.get(Assets.WALK_TEXTUREATLAS));
+        super(Assets.manager.get(Assets.WALK2_TEXTUREATLAS));
+        setFps(12);
         this.pos = pos;
         this.speed = speed;
         setPosition(pos, 100);

@@ -59,7 +59,7 @@ public class Assets {
 			= new AssetDescriptor<Texture>("pictures/Moszkito/szunyog.png", Texture.class);
 
 	public static final AssetDescriptor<Texture> BACKGROUND_TEXTURE
-			= new AssetDescriptor<Texture>("pictures/background.png", Texture.class);
+			= new AssetDescriptor<Texture>("pictures/bg2.png", Texture.class);
 
 	public static final AssetDescriptor<Texture> BTN_START_DOWN_TEXTURE
 			= new AssetDescriptor<Texture>("pictures/start_down.png", Texture.class);

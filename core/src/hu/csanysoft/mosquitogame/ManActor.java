@@ -25,6 +25,7 @@ public class ManActor extends OneSpriteAnimatedActor {
         setPosition(pos, 100);
         setSize(getWidth()/3, getHeight()/3);
         System.out.println("getWidth() = " + getWidth());
+
     }
 
     public void setFlip(boolean x, boolean y) {

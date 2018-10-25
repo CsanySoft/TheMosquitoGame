@@ -14,9 +14,11 @@ public class OneSpriteAnimatedActor extends OneSpriteActor {
     protected boolean running = true;
     protected boolean looping = true;
     protected float animationTime = 0;
+    protected boolean flipped = false;
 
     private int actualFrame = 0;
     private int prevFrame = 0;
+
 
 
     public void flip(){
@@ -87,6 +89,7 @@ public class OneSpriteAnimatedActor extends OneSpriteActor {
     public void setFrame(int frame)
     {
         sprite.setRegion(textureAtlas.getRegions().get(frame % textureAtlas.getRegions().size));
+        if(flipped) sprite.flip(true, false);
     }
 
     public void setFramePercent(float percent) {
@@ -128,5 +131,14 @@ public class OneSpriteAnimatedActor extends OneSpriteActor {
     protected void sizeChanged() {
         super.sizeChanged();
         setFrame(((int) (elapsedTime * fps)));
+    }
+
+    public boolean isFlipped() {
+        return flipped;
+    }
+
+    public void flip(boolean flipped) {
+
+        this.flipped = flipped;
     }
 }

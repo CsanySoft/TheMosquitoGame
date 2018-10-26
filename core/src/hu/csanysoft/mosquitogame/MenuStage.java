@@ -14,6 +14,8 @@ import hu.csanysoft.mosquitogame.GlobalClasses.Assets;
 import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.MyStage;
 import hu.csanysoft.mosquitogame.MyBaseClasses.UI.MyButton;
 
+import static hu.csanysoft.mosquitogame.GlobalClasses.Assets.musicPlaying;
+
 public class MenuStage extends MyStage {
 
     TextButton btnStart, btnExit, btnInput;
@@ -25,9 +27,10 @@ public class MenuStage extends MyStage {
         super(new ExtendViewport(game.SCREEN_WIDTH, game.SCREEN_HEIGHT), batch, game);
         this.gameFinal = game;
 
+
         hatterzene.setVolume(2.5f);
         hatterzene.setLooping(true);
-        hatterzene.play();
+        if(musicPlaying)hatterzene.play();
 
  /*       btnStart = new MyButton("", game.btnStart());
         btnStart.addListener(new ClickListener() {
@@ -64,7 +67,7 @@ public class MenuStage extends MyStage {
         });
         addActor(btnExit);
         btnExit.setPosition(getViewport().getWorldWidth() / 2 - btnExit.getWidth() / 2, getViewport().getWorldHeight() / 2 - btnExit.getHeight());
-        btnInput = new MyButton("input teszt", game.btnStart());
+        btnInput = new MyButton("", game.btnStart());
         btnInput.addListener(new ClickListener() {
 
             @Override
@@ -79,6 +82,30 @@ public class MenuStage extends MyStage {
         });
         btnInput.setPosition(getViewport().getWorldWidth() / 2 - btnInput.getWidth() / 2, getViewport().getWorldHeight() / 2 + btnInput.getHeight());
         addActor(btnInput);
+
+        addActor(new MyButton("Zene: be", game.btnStart()){
+            @Override
+            public void init() {
+                super.init();
+                this.setPosition(gameFinal.SCREEN_WIDTH-this.getWidth()-50, 100);
+                addListener(new ClickListener(){
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        super.clicked(event, x, y);
+                        musicPlaying = !musicPlaying;
+                        if(musicPlaying){
+                            Assets.manager.get(Assets.MUSIC_MENU).play();
+                            setText("Zene: be");
+                        }
+                        else{
+                            Assets.manager.get(Assets.MUSIC_MENU).pause();
+                            setText("Zene: ki");
+                        }
+
+                    }
+                });
+            }
+        });
     }
 
     @Override

@@ -87,6 +87,7 @@ public class TheMosquitoGame extends MyGame {
 	@Override
 	public void create () {
 		Assets.prepare();
+		Gdx.input.setCatchBackKey(true);
 		setScreen(new LoadingScreen(this));
 	}
 

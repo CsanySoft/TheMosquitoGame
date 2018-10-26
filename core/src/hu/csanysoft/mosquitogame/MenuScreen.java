@@ -20,6 +20,7 @@ public class MenuScreen extends MyScreen {
         r = true;
         g = false;
         b = false;
+        menuStage.addBackEventStackListener();
     }
 
     @Override

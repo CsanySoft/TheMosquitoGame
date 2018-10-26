@@ -1,5 +1,6 @@
 package hu.csanysoft.mosquitogame;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -179,5 +180,13 @@ public class GameStage extends MyStage {
         System.out.println("getViewport().getLeftGutterWidth() = " + getViewport().getLeftGutterWidth());
         System.out.println("getViewport().getRightGutterWidth() = " + getViewport().getRightGutterWidth());
         System.out.println("getViewport().getRightGutterX() = " + getViewport().getRightGutterX());
+    }
+
+    @Override
+    public boolean keyDown(int keycode) {
+        if(keycode == Input.Keys.BACK){
+            game.setScreenBackByStackPop();
+        }
+        return false;
     }
 }

@@ -1,4 +1,5 @@
 package hu.csanysoft.mosquitogame;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -90,5 +91,13 @@ public class InputStage extends MyStage{
         if(szunyogseb.isValid() && szunyogseb.getValue() > 0) {
             getActors().removeValue(helpHandActor, true);
         }
+    }
+
+    @Override
+    public boolean keyDown(int keycode) {
+        if(keycode == Input.Keys.BACK){
+            game.setScreenBackByStackPop();
+        }
+        return false;
     }
 }

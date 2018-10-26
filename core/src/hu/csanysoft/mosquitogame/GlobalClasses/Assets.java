@@ -48,6 +48,12 @@ public class Assets {
 			= new AssetDescriptor<BitmapFont>(fontParameter.fontFileName, BitmapFont.class, fontParameter);
 
 
+	public static final AssetDescriptor<Texture> ZENE_BUTTON_LENYOMVA_TEXTURE
+			= new AssetDescriptor<Texture>("zene_lent.png", Texture.class);
+
+	public static final AssetDescriptor<Texture> ZENE_BUTTON_FELENGEDVE_TEXTURE
+			= new AssetDescriptor<Texture>("zene_fent.png", Texture.class);
+
 	public static final AssetDescriptor<Texture> HELPHAND_TEXTURE
 			= new AssetDescriptor<Texture>("pictures/help_hand.png", Texture.class);
 
@@ -119,6 +125,10 @@ public class Assets {
 
 		manager.load(MAN666_TEXTURE);
 		manager.load(MSUSIC_AMENO);
+
+		manager.load(ZENE_BUTTON_FELENGEDVE_TEXTURE);
+		manager.load(ZENE_BUTTON_LENYOMVA_TEXTURE);
+
 
 		manager.load(HELPHAND_TEXTURE);
 

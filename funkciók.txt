@@ -1,0 +1,6 @@
+Github link: https://github.com/CsanySoft/TheMosquitoGame/tree/v1.0
+
+- Egyedi textúrák
+- Zenék
+- Szél
+- Animációk: - Röppálya animálása

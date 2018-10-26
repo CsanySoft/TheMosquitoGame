@@ -60,9 +60,9 @@ loading-bar2
   index: -1
 libgdx-logo
   rotate: false
-  xy: 1, 8
-  size: 408, 68
-  orig: 408, 68
+  xy: 1, 496
+  size: 220, 230
+  orig: 220, 230
   offset: 0, 0
   index: -1
 loading-bar-hidden

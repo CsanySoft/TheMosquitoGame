@@ -3,17 +3,14 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.viewport.Viewport;
+
 import hu.csanysoft.mosquitogame.MyBaseClasses.Scene2D.MyStage;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import hu.csanysoft.mosquitogame.MyBaseClasses.UI.MyButton;
 import hu.csanysoft.mosquitogame.MyBaseClasses.UI.MyInputField;
-import hu.csanysoft.mosquitogame.MyBaseClasses.UI.MyTextField;
-import hu.csanysoft.mosquitogame.TheMosquitoGame;
 
 public class InputStage extends MyStage{
 
@@ -29,17 +26,17 @@ public class InputStage extends MyStage{
     }
     @Override
     public void init() {
-        szunyogseb = new MyInputField("Szúnyog sebesség: ", "m/s",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
+        szunyogseb = new MyInputField("Szúnyog sebesség: ", "m/s",game.getTextFieldStyle_White(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
         szunyogseb.setPosition(10, 600);
-        ember1seb = new MyInputField("Ember 1 sebesség: ", "m/s",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
+        ember1seb = new MyInputField("Ember 1 sebesség: ", "m/s",game.getTextFieldStyle_White(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
         ember1seb.setPosition(10, 400);
-        ember2seb = new MyInputField("Ember 2 sebesség: ", "m/s",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
+        ember2seb = new MyInputField("Ember 2 sebesség: ", "m/s",game.getTextFieldStyle_White(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
         ember2seb.setPosition(10, 200);
-        szunyogtav = new MyInputField("Szúnyog távolság: ","m",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
+        szunyogtav = new MyInputField("Szúnyog távolság: ","m",game.getTextFieldStyle_White(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
         szunyogtav.setPosition(600, 600);
-        embertav = new MyInputField("Emberek közti táv: ","m",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
+        embertav = new MyInputField("Emberek közti táv: ","m",game.getTextFieldStyle_White(), game.getTextFieldStyle_Red(), MyInputField.InputMode.POSITIVE_FlOAT_ONLY);
         embertav.setPosition(600, 400);
-        szel = new MyInputField("Szél: ","m/s",game.getTextFieldStyle_Black(), game.getTextFieldStyle_Red(), MyInputField.InputMode.FLOAT);
+        szel = new MyInputField("Szél: ","m/s",game.getTextFieldStyle_White(), game.getTextFieldStyle_Red(), MyInputField.InputMode.FLOAT);
         szel.setPosition(600, 200);
         startButton = new MyButton("", game.btnStart());
         startButton.setPosition(getWidth()/2-startButton.getWidth()/2, 50);
@@ -95,7 +92,7 @@ public class InputStage extends MyStage{
 
     @Override
     public boolean keyDown(int keycode) {
-        if(keycode == Input.Keys.BACK){
+        if(keycode == Input.Keys.BACK || keycode == Input.Keys.ESCAPE){
             game.setScreenBackByStackPop();
         }
         return false;

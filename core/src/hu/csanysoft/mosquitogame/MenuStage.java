@@ -87,7 +87,7 @@ public class MenuStage extends MyStage {
             @Override
             public void init() {
                 super.init();
-                this.setPosition(gameFinal.SCREEN_WIDTH-this.getWidth()-50, 100);
+                this.setPosition(gameFinal.SCREEN_WIDTH-this.getWidth()-50, 50);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {

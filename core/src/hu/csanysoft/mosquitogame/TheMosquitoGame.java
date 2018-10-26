@@ -55,7 +55,7 @@ public class TheMosquitoGame extends MyGame {
 
 	}
 
-	public TextField.TextFieldStyle getTextFieldStyle_Black() {
+	public TextField.TextFieldStyle getTextFieldStyle_White() {
 		// TODO: 1/5/2018 textfield texture
 		TextField.TextFieldStyle style = new TextField.TextFieldStyle();
 		//style.background.setLeftWidth(style.background.getLeftWidth()+20);
@@ -63,7 +63,7 @@ public class TheMosquitoGame extends MyGame {
 		style.font = Assets.manager.get(Assets.ARIAL_30_FONT);
 		style.font.getData().setScale(1.2f);
 
-		style.fontColor = Color.BLACK;
+		style.fontColor = Color.WHITE;
 		return style;
 	}
 	public TextField.TextFieldStyle getTextFieldStyle_Red() {

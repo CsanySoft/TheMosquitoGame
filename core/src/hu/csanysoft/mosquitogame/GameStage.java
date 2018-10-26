@@ -184,7 +184,7 @@ public class GameStage extends MyStage {
 
     @Override
     public boolean keyDown(int keycode) {
-        if(keycode == Input.Keys.BACK){
+        if(keycode == Input.Keys.BACK || keycode == Input.Keys.ESCAPE){
             game.setScreenBackByStackPop();
         }
         return false;

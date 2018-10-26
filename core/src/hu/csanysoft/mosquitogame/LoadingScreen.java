@@ -44,7 +44,7 @@ public class LoadingScreen extends MyScreen {
 
         TextureAtlas atlas = Assets.manager.get("pictures/loading.pack", TextureAtlas.class);
 
-        logo = new Image(atlas.findRegion("libgdx-logo")); //TODO: Átrakni saját logora
+        logo = new Image(atlas.findRegion("libgdx-logo"));
         loadingFrame = new Image(atlas.findRegion("loading-frame"));
         loadingBarHidden = new Image(atlas.findRegion("loading-bar-hidden"));
         screenBg = new Image(atlas.findRegion("screen-bg"));
@@ -61,8 +61,6 @@ public class LoadingScreen extends MyScreen {
         loadingStage.addActor(loadingBarHidden);
         loadingStage.addActor(loadingFrame);
         loadingStage.addActor(logo);
-
-
 
         Assets.load();
     }
@@ -89,7 +87,7 @@ public class LoadingScreen extends MyScreen {
         logo.setY((worldHeight- logo.getHeight()) / 2 + 100);
 
         //loadingBar.setX((worldWidth - loadingBar.getWidth()) / 4);
-        loadingBar.setX(logo.getX() - (logo.getWidth()-loadingBar.getWidth())/8);
+        loadingBar.setX(logo.getX() - (logo.getWidth()-loadingBar.getWidth())/1.5f);
         loadingBar.setY((worldHeight - loadingBar.getHeight()) / 4);
 
         loadingFrame.setPosition(loadingBar.getX()-15, loadingBar.getY()-5);

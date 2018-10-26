@@ -162,6 +162,8 @@ public class GameStage extends MyStage {
                 addActor(explosionActor = new ExplosionActor());
                 explosionActor.setPosition(mosquitoActor.getX()-explosionActor.getWidth()/2 + mosquitoWidth/2, mosquitoActor.getY()-explosionActor.getHeight()/2 + mosquitoWidth/2);
                 egyszerRobban = false;
+                manActor1.setFps(0);
+                manActor2.setFps(0);
             }
         }
     }
@@ -176,10 +178,6 @@ public class GameStage extends MyStage {
         lblMegtettTav.setSize(200, 20);
         bg.setWidth(getViewport().getWorldWidth());
         bg.setHeight(getViewport().getWorldHeight());
-        System.out.println("getViewport().getScreenX() = " + getViewport().getScreenX());
-        System.out.println("getViewport().getLeftGutterWidth() = " + getViewport().getLeftGutterWidth());
-        System.out.println("getViewport().getRightGutterWidth() = " + getViewport().getRightGutterWidth());
-        System.out.println("getViewport().getRightGutterX() = " + getViewport().getRightGutterX());
     }
 
     @Override

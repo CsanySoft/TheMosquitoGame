@@ -23,6 +23,7 @@ public class GameScreen extends MyScreen {
         inputMultiplexer = new InputMultiplexer();
         inputMultiplexer.addProcessor(gameStage);
         Gdx.input.setInputProcessor(inputMultiplexer);
+        gameStage.addBackEventStackListener();
     }
 
     @Override

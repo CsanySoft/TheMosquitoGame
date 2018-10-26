@@ -41,6 +41,8 @@ public class Assets {
 
 	}
 
+	public static boolean musicPlaying = true;
+
 
 	public static final AssetDescriptor<BitmapFont> ARIAL_30_FONT
 			= new AssetDescriptor<BitmapFont>(fontParameter.fontFileName, BitmapFont.class, fontParameter);
